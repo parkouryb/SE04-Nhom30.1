@@ -12,7 +12,7 @@ public class Server {
 
         try {
             session.getTransaction().begin();
-            System.out.println("goodbye world?");
+            System.out.println("goodbye world!!!?");
 
             session.getTransaction().commit();
         } catch (Exception ex) {
