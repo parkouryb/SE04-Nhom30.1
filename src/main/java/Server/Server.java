@@ -3,25 +3,46 @@ import Hibernate.HibernateUtils;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.ArrayList;
+import java.util.concurrent.*;
+
 public class Server {
-    public static void main(String[] args) {
+    private static final int NUMBER_OF_THREAD = 4;
+    private final static String SERVER_ADDRESS = "127.0.0.10";
+    private final static int SERVER_PORT = 452;
+    private static ExecutorService executorService = Executors.newFixedThreadPool(NUMBER_OF_THREAD);
+    private static ArrayList<WorkerThread> clients = new ArrayList<WorkerThread>();
 
-        SessionFactory factory = HibernateUtils.getSessionFactory();
-
-        Session session = factory.getCurrentSession();
-
+    public static void main(String[] args) throws IOException {
+        ServerSocket serverSocket = null;
         try {
-            session.getTransaction().begin();
-            System.out.println("goodbye world!!!?");
+            serverSocket = new ServerSocket(SERVER_PORT);
+            System.out.println("[SERVER] " + serverSocket.getInetAddress() + " - " + serverSocket.getLocalPort());
 
-            session.getTransaction().commit();
-        } catch (Exception ex) {
-            ex.printStackTrace();
+            while (true) {
 
-            session.getTransaction().rollback();
+                try {
+                    Socket client = serverSocket.accept();
+                    System.out.println("Client accepted: " + client);
+                    WorkerThread workerThread = new WorkerThread(client);
+                    clients.add(workerThread);
+
+
+                    executorService.execute(workerThread);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Connection Error: " + e);
+        } finally {
+            if (serverSocket != null) {
+                System.out.println("Close " + serverSocket + " now!");
+                serverSocket.close();
+            }
         }
-
-        HibernateUtils.shutdown();
-
     }
 }
