@@ -19,10 +19,9 @@ public class HibernateUtils {
             Metadata metadata = new MetadataSources(serviceRegistry)
                     .getMetadataBuilder()
                     .build();
-
             return metadata.getSessionFactoryBuilder().build();
         } catch (Throwable ex) {
-            System.err.println("Bug");
+            System.out.println("[HBU][ERROR] Can't connect to database!");
             throw new ExceptionInInitializerError(ex);
         }
 

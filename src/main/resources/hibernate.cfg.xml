@@ -33,7 +33,9 @@
         <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">true</property>
 
-        <mapping class="Object.User" />
+<!--        <mapping class="Entity.User" />-->
+        <mapping class="Entity.Account" />
+        <mapping class="Entity.Student" />
 
 
     </session-factory>
