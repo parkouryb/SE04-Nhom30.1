@@ -18,7 +18,7 @@
 
 <!--        ?serverTimezone=UTC-->
         <!-- JDBC connection pool (use the built-in) -->
-        <property name="connection.pool_size">1</property>
+        <property name="connection.pool_size">4</property>
         <property name="format_sql">true</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
 
@@ -36,6 +36,9 @@
 <!--        <mapping class="Entity.User" />-->
         <mapping class="Entity.Account" />
         <mapping class="Entity.Student" />
+        <mapping class="Entity.TrainingScores" />
+        <mapping class="Entity.Event" />
+        <mapping class="Entity.Subjects" />
 
 
     </session-factory>

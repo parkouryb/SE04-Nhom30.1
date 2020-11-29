@@ -7,16 +7,16 @@ import java.io.Serializable;
 @Table(
         name = "account",
         uniqueConstraints = {
+                @UniqueConstraint(columnNames = "studentId"),
                 @UniqueConstraint(columnNames = "username"),
         }
 )
 public class Account implements Serializable {
     @Id
     @Column(name="studentId", length = 100)
-    private String studentId;
+    private String studentId = "HaHieuDepzai";
 
     @Column(name="username")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private String username;
 
     @Column(name="password", length = 100)
@@ -24,9 +24,10 @@ public class Account implements Serializable {
     @Column(name="root", length = 100)
     private int root;
 
-    @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
     private Student student;
-
+    
     public Student getInformation() {
         return student;
     }
