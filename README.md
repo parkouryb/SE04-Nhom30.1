@@ -5,8 +5,7 @@
     Người Hướng Dẫn: Mr Bùi Sỹ Nguyên.
 ## Quick Start
     ⚫ https://github.com/parkouryb/SE04-Nhom30.1/wiki/Quick-Start
-## Member  
-    🐲 Vu Hai Dang  
-    🐲 Trinh Thi Cam Nhung  
-    🐲 Ha Trung Hieu  
-
+## Thành Viên  
+    🐲 Vũ Hải Đăng  
+    🐲 Trịnh Thị Cẩm Nhung  
+    🐲 Hà Trung Hiếu  
