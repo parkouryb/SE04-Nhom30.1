@@ -38,14 +38,14 @@ public class Student implements Serializable {
     @JoinColumn(name = "st_fid", referencedColumnName = "studentId")
     private Set<TrainingScores> trainingScores = new HashSet<TrainingScores>();
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "student_event",
             joinColumns = { @JoinColumn(name = "studentId")},
             inverseJoinColumns = { @JoinColumn(name = "eventId")}
     )
     private Set<Event> eventSet = new HashSet<>();
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "student_subjects",
             joinColumns = {@JoinColumn(name = "studentId")},
             inverseJoinColumns = {@JoinColumn(name = "subjectCode")}
