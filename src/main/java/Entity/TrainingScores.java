@@ -7,62 +7,52 @@ import java.io.Serializable;
 @Table(name="trainingScores")
 public class TrainingScores implements Serializable {
     @Id
-    @Column(name="studentId", length = 100)
-    private String studentId = "HaHieuDepzai";
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+//    @Column(name="studentId", length = 100)
+//    private String studentId = "HaHieuDepzai";
 
-    @Column(name="semester")
-    private Integer semester;
-
-    @Column(name="year")
-    private String year;
+    @Column(name="sem_year")
+    private String sem_year = "*&^";
 
     @Column(name="point")
     private int point;
 
-    @OneToOne(mappedBy = "trainingScores",cascade = CascadeType.ALL)
-    private Student student;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    private Student student;
 
     public TrainingScores() {
     }
 
-    public TrainingScores(String studentId, Integer semester, String year, int point) {
-        this.studentId = studentId;
-        this.semester = semester;
-        this.year = year;
+    public TrainingScores(String sem_year, int point) {
+//        this.studentId = studentId;
+        this.sem_year = sem_year;
         this.point = point;
     }
 
-    public String getYear() {
-        return year;
+    public String getSem_year() {
+        return sem_year;
     }
 
-    public void setYear(String year) {
-        this.year = year;
+    public void setSem_year(String sem_year) {
+        this.sem_year = sem_year;
     }
 
-    public Student getStudent() {
-        return student;
-    }
+//    public Student getStudent() {
+//        return student;
+//    }
+//
+//    public void setStudent(Student student) {
+//        this.student = student;
+//    }
 
-    public void setStudent(Student student) {
-        this.student = student;
-    }
-
-    public String getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(String studentId) {
-        this.studentId = studentId;
-    }
-
-    public Integer getSemester() {
-        return semester;
-    }
-
-    public void setSemester(Integer semester) {
-        this.semester = semester;
-    }
+//    public String getStudentId() {
+//        return studentId;
+//    }
+//
+//    public void setStudentId(String studentId) {
+//        this.studentId = studentId;
+//    }
 
     public int getPoint() {
         return point;
@@ -75,10 +65,10 @@ public class TrainingScores implements Serializable {
     @Override
     public String toString() {
         return "TrainingScores{" +
-                "studentId='" + studentId + '\'' +
-                ", semester=" + semester +
-                ", year='" + year + '\'' +
+//                "studentId='" + studentId + '\'' +
+                ", sem_year='" + sem_year + '\'' +
                 ", point=" + point +
+//                ", student=" + student +
                 '}';
     }
 }
