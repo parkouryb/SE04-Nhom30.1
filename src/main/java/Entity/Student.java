@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -33,9 +34,9 @@ public class Student implements Serializable {
     @OneToOne(mappedBy = "student", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Account account;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn
-    private TrainingScores trainingScores;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "st_fid", referencedColumnName = "studentId")
+    private Set<TrainingScores> trainingScores = new HashSet<TrainingScores>();
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "student_event",
@@ -95,11 +96,11 @@ public class Student implements Serializable {
         this.name = name;
     }
 
-    public TrainingScores getTrainingScores() {
+    public Set<TrainingScores> getTrainingScores() {
         return trainingScores;
     }
 
-    public void setTrainingScores(TrainingScores trainingScores) {
+    public void setTrainingScores(Set<TrainingScores> trainingScores) {
         this.trainingScores = trainingScores;
     }
 
