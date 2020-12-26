@@ -14,7 +14,7 @@ import java.io.Serializable;
 public class Account implements Serializable {
     @Id
     @Column(name="studentId", length = 100)
-    private String studentId = "HaHieuDepzai";
+    private String studentId = "HaHieuDepzai*&^";
 
     @Column(name="username")
     private String username;

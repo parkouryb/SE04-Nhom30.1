@@ -1,8 +1,5 @@
 package Server;
 
-import Interactive.DatabaseInteractive;
-import org.hibernate.dialect.Database;
-
 import java.io.*;
 import java.net.Socket;
 
@@ -27,12 +24,7 @@ public class WorkerThread implements Runnable {
                 System.out.println("[SERVER][COMMAND][RECEIVE][SUCCESS]");
                 if (command.startsWith("$101")) {
                     System.out.println("Process $101");
-                    if (DatabaseInteractive.Register(command)) {
-                        System.out.println("Success");
-                    }
                 }
-
-
             }
         } catch (IOException e) {
             System.err.println("Request Processing Error: " + e);

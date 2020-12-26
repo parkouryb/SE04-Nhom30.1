@@ -5,41 +5,32 @@ import Entity.Account;
 import Entity.TrainingScores;
 import Hibernate.HibernateUtils;
 import org.hibernate.Session;
-
+import Interactive.*;
 import java.util.Date;
 
+import static Interactive.DatabaseInteractive.Register;
+
 public class Mainn {
+    public static void dangky() {
+        Account ac1 = new Account("18001131", "18001131", "bb5522", 1);
+        boolean ok = Operation.register(ac1);
+        System.out.println("register is " + ok);
+    }
+
+    public static void themthongtinsinhvientheomasinhvien() {
+        Student student = new Student("18001131", "Ha Hieu");
+        boolean ok = Operation.addInformation("18001131", student);
+        System.out.println("addInformation is " + ok);
+    }
+
+    public static void thaydoidiemGPA() {
+        boolean ok = Operation.changeInformation("18001131", 3.6f);
+        System.out.println("change information is " + ok);
+    }
+
     public static void main(String[] args) throws Exception{
-        Session session = HibernateUtils.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
-
-//        Account hieuAc = new Account("4", "33", "hahieu2k", 0);
-//
-//        Student hieu = new Student(
-//                "4", "Hieu"
-//        );
-//
-//        TrainingScores trainingScores = new TrainingScores("4", 2, "2019-2020", 100);
-//
-//        hieuAc.setInformation(hieu);
-//        session.save(hieuAc);
-
-//        Student a = (Student) session.get(Student.class, "4");
-//        a.setTrainingScores(trainingScores);
-//        System.out.println(a.getTrainingScores());
-
-//        Account b = (Account) session.get(Account.class, "4");
-//        System.out.println(b);
-//        System.out.println(b.getInformation());
-
-
-//        TrainingScores trainingScores = (TrainingScores) session.get(TrainingScores.class, "4");
-//
-//        System.out.println(trainingScores.getStudent());
-
-        session.getTransaction().commit();
-
-        session.close();
+//        themthongtinsinhvientheomasinhvien();
+        thaydoidiemGPA();
     }
 }
 

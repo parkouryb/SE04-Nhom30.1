@@ -54,6 +54,14 @@ public class Student implements Serializable {
     @Column(name = "creditsCount")
     private Integer creditsCount = 0;
 
+    public Student() {
+    }
+
+    public Student(String studentId, String name) {
+        this.studentId = studentId;
+        this.name = name;
+    }
+
     public Account getAccount() {
         return account;
     }
@@ -69,14 +77,6 @@ public class Student implements Serializable {
 
     public void setEventSet(Set<Event> eventSet) {
         this.eventSet = eventSet;
-    }
-
-    public Student() {
-    }
-
-    public Student(String studentId, String name) {
-        this.studentId = studentId;
-        this.name = name;
     }
 
     public String getStudentId() {
