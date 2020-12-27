@@ -9,3 +9,8 @@
     🐲 Vũ Hải Đăng  
     🐲 Trịnh Thị Cẩm Nhung  
     🐲 Hà Trung Hiếu  
+## Mục tiêu
+    - Giúp cho việc quản lý lớp học dễ dàng hơn
+    - Phần mềm có chức năng phân quyền (3 quyền: Lớp trưởng, Bí thư/Thủ quỹ, Người dùng)
+## Chức năng - Nhiệm vụ
+    - Đăng nhập - Sử dụng tài khoản (email), mật khẩu. Sau khi đăng nhập xong có thể 
