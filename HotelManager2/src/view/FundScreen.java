@@ -52,6 +52,7 @@ public class FundScreen extends javax.swing.JFrame {
             }
         });
 
+        panelToggle.setBackground(new java.awt.Color(102, 205, 170));
         panelToggle.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         btnStage.setText("Tiến độ môn học (học phần)");
@@ -139,9 +140,9 @@ public class FundScreen extends javax.swing.JFrame {
                 .addGroup(panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelToggle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnToggle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(143, 143, 143)
+                .addGap(136, 136, 136)
                 .addComponent(jLabel1)
-                .addGap(0, 286, Short.MAX_VALUE))
+                .addGap(0, 154, Short.MAX_VALUE))
         );
         panelMainLayout.setVerticalGroup(
             panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,11 +150,11 @@ public class FundScreen extends javax.swing.JFrame {
                 .addComponent(btnToggle, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelMainLayout.createSequentialGroup()
-                        .addGap(135, 135, 135)
-                        .addComponent(jLabel1))
-                    .addGroup(panelMainLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(panelToggle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(panelToggle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelMainLayout.createSequentialGroup()
+                        .addGap(166, 166, 166)
+                        .addComponent(jLabel1)))
                 .addContainerGap(116, Short.MAX_VALUE))
         );
 
@@ -175,35 +176,11 @@ public class FundScreen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnToggleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnToggleActionPerformed
+    private void btnTrainingReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrainingReportActionPerformed
         // TODO add your handling code here:
-        //show panelToggle when user click on
-        toggleStatus = !toggleStatus;
-        panelToggle.setVisible(toggleStatus);
-    }//GEN-LAST:event_btnToggleActionPerformed
-
-    private void btnStageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStageActionPerformed
-        // TODO add your handling code here:
-        MainScreen.main(null);
+        TrainingReportScreen.main(null);
         this.dispose();
-    }//GEN-LAST:event_btnStageActionPerformed
-
-    private void btnScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnScheduleActionPerformed
-        // TODO add your handling code here:
-        ScheduleScreen.main(null);
-        this.dispose();
-    }//GEN-LAST:event_btnScheduleActionPerformed
-
-    private void btnClassListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClassListActionPerformed
-        // TODO add your handling code here:
-        ClassListScreen.main(null);
-        this.dispose();
-    }//GEN-LAST:event_btnClassListActionPerformed
-
-    private void btnFundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFundActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_btnFundActionPerformed
+    }//GEN-LAST:event_btnTrainingReportActionPerformed
 
     private void btnEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEventActionPerformed
         // TODO add your handling code here:
@@ -211,11 +188,34 @@ public class FundScreen extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnEventActionPerformed
 
-    private void btnTrainingReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrainingReportActionPerformed
+    private void btnFundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFundActionPerformed
         // TODO add your handling code here:
-        TrainingReportScreen.main(null);
+    }//GEN-LAST:event_btnFundActionPerformed
+
+    private void btnClassListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClassListActionPerformed
+        // TODO add your handling code here:
+        ClassListScreen.main(null);
         this.dispose();
-    }//GEN-LAST:event_btnTrainingReportActionPerformed
+    }//GEN-LAST:event_btnClassListActionPerformed
+
+    private void btnScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnScheduleActionPerformed
+        // TODO add your handling code here:
+        ScheduleScreen.main(null);
+        this.dispose();
+    }//GEN-LAST:event_btnScheduleActionPerformed
+
+    private void btnStageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStageActionPerformed
+        // TODO add your handling code here:
+        MainScreen.main(null);
+        this.dispose();
+    }//GEN-LAST:event_btnStageActionPerformed
+
+    private void btnToggleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnToggleActionPerformed
+        // TODO add your handling code here:
+        //show panelToggle when user click on
+        toggleStatus = !toggleStatus;
+        panelToggle.setVisible(toggleStatus);
+    }//GEN-LAST:event_btnToggleActionPerformed
 
     /**
      * @param args the command line arguments
