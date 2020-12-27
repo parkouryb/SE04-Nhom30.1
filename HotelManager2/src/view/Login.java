@@ -5,6 +5,7 @@
  */
 package view;
 
+import Entity.Account;
 import Services.AccountServicesImp;
 
 /**
@@ -12,6 +13,7 @@ import Services.AccountServicesImp;
  * @author Cam Nhung
  */
 public class Login extends javax.swing.JFrame {
+    public static Account userCredit = null;
 
     /**
      * Creates new form Login
@@ -135,14 +137,14 @@ public class Login extends javax.swing.JFrame {
         if (txtUsername.getText() != null && txtUsername.getText().equals("")
                 || txtPass.getText() != null && txtPass.getText().equals("")) {
             System.out.println("FUCK");
-        } else if (acc.authenAccount(txtUsername.getText(), txtPass.getText()) == null) {
+        } else if ((userCredit = acc.authenAccount(txtUsername.getText(), txtPass.getText())) == null) {
             //wrong password
             System.out.println("Wrong password or username");
             txtPass.setText("");
         } else {
             //login success
             System.out.println("login done");
-            MainScreen.main(null);
+            UserProfileScreen.main(null);
             this.dispose();
         }
     }//GEN-LAST:event_btnLoginActionPerformed

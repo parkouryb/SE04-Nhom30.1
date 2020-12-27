@@ -9,16 +9,15 @@ package view;
  *
  * @author Cam Nhung
  */
-public class MainScreen extends javax.swing.JFrame {
+public class UserProfileScreen extends javax.swing.JFrame {
 
-    private boolean toggleStatus = false;
-
+//    private boolean toggleStatus = false;
     /**
      * Creates new form MainScreen
      */
-    public MainScreen() {
+    public UserProfileScreen() {
         initComponents();
-        panelToggle.setVisible(toggleStatus);
+//        panelToggle.setVisible(toggleStatus);
     }
 
     /**
@@ -224,6 +223,11 @@ public class MainScreen extends javax.swing.JFrame {
         });
 
         jButton7.setText("Logout");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         btnStage.setText("Tiến độ môn học (học phần)");
         btnStage.addActionListener(new java.awt.event.ActionListener() {
@@ -321,13 +325,14 @@ public class MainScreen extends javax.swing.JFrame {
     private void btnToggleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnToggleActionPerformed
         // TODO add your handling code here:
         //show panelToggle when user click on
-        toggleStatus = !toggleStatus;
-        panelToggle.setVisible(toggleStatus);
+        UserProfileScreen.main(null);
+        this.dispose();
     }//GEN-LAST:event_btnToggleActionPerformed
 
     private void btnStageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStageActionPerformed
         // TODO add your handling code here:
-
+        StageScreen.main(null);
+this.dispose();
     }//GEN-LAST:event_btnStageActionPerformed
 
     private void btnScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnScheduleActionPerformed
@@ -360,6 +365,13 @@ public class MainScreen extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnTrainingReportActionPerformed
 
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+                Login.userCredit = null;
+        this.dispose();
+        Login.main(null);
+    }//GEN-LAST:event_jButton7ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -377,20 +389,21 @@ public class MainScreen extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserProfileScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserProfileScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserProfileScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserProfileScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainScreen().setVisible(true);
+                new UserProfileScreen().setVisible(true);
             }
         });
     }
