@@ -34,8 +34,11 @@ public class Student implements Serializable {
     @OneToOne(mappedBy = "student", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Account account;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "st_fid", referencedColumnName = "studentId")
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "student_trainingscores",
+            joinColumns = { @JoinColumn(name = "studentId")},
+            inverseJoinColumns = { @JoinColumn(name = "sem_year")}
+    )
     private Set<TrainingScores> trainingScores = new HashSet<TrainingScores>();
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)

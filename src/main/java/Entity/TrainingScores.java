@@ -2,12 +2,14 @@ package Entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="trainingScores")
 public class TrainingScores implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 //    @Column(name="studentId", length = 100)
 //    private String studentId = "HaHieuDepzai";
@@ -18,8 +20,8 @@ public class TrainingScores implements Serializable {
     @Column(name="point")
     private int point;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    private Student student;
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "trainingScores")
+    private Set<Student> students = new HashSet<Student>();
 
     public TrainingScores() {
     }

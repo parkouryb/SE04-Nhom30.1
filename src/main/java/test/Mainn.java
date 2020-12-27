@@ -110,11 +110,11 @@ public class Mainn {
 //        themthongtinsinhvientheomasinhvien();
 //        thaydoidiemGPA();
 //        deleteAccount();
-//        addTrainingScore();
+        addTrainingScore();
 //        addEvent();
 //        addEventStudentId();
-
-        getEventStudentId();
+//        System.out.println("heeloo");
+//        getEventStudentId();
     }
 }
 
