@@ -27,8 +27,10 @@ public class addOperation {
         } catch (Exception e) {
             System.err.println("[ERROR]");
             session.getTransaction().rollback();
+            session.close();
             return false;
         }
+        session.close();
         return true;
     }
 
@@ -42,8 +44,10 @@ public class addOperation {
         } catch (Exception e) {
             System.err.println("[ERROR]");
             session.getTransaction().rollback();
+            session.close();
             return false;
         }
+        session.close();
         return true;
     }
 
@@ -56,8 +60,10 @@ public class addOperation {
         } catch (Exception e) {
             System.err.println("[ERROR]");
             session.getTransaction().rollback();
+            session.close();
             return false;
         }
+        session.close();
         return true;
     }
 
@@ -70,8 +76,10 @@ public class addOperation {
         } catch (Exception e) {
             System.err.println("[ERROR]");
             session.getTransaction().rollback();
+            session.close();
             return false;
         }
+        session.close();
         return true;
     }
 
@@ -90,8 +98,10 @@ public class addOperation {
         } catch (Exception e) {
             System.err.println("[ERROR]");
             session.getTransaction().rollback();
+            session.close();
             return false;
         }
+        session.close();
         return true;
     }
 
@@ -108,26 +118,32 @@ public class addOperation {
         } catch (Exception e) {
             System.err.println("[ERROR]");
             session.getTransaction().rollback();
+            session.close();
             return false;
         }
+        session.close();
         return true;
     }
 
-    public static boolean addSubjectStudent(String studentId, Subject subject) {
+    public static boolean addSubjectStudent(StudentSubject studentSubject) {
+        Student student = studentSubject.getId().getStudent();
+        Subject subject = studentSubject.getId().getSubject();
         Session session = HibernateUtils.getSessionFactory().getCurrentSession();
         try {
             session.getTransaction().begin();
-            Student student = session.get(Student.class, studentId);
 
-//            Set <Subject> subjectSet = student.getSubjectsSet();
-//            subjectSet.add(subject);
+            student.getSubjectSet().add(studentSubject);
+            subject.getStudentsSet().add(studentSubject);
+            session.save(studentSubject);
 
             session.getTransaction().commit();
         } catch (Exception e) {
             System.err.println("[ERROR]");
             session.getTransaction().rollback();
+            session.close();
             return false;
         }
+        session.close();
         return true;
     }
 }

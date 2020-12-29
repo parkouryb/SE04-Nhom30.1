@@ -1,8 +1,6 @@
 package Interactive;
 
-import Entity.Event;
-import Entity.Student;
-import Entity.TrainingScores;
+import Entity.*;
 import Hibernate.HibernateUtils;
 import org.hibernate.Session;
 
@@ -40,7 +38,7 @@ public class getOperation {
         return result;
     }
 
-    public static Set<Student> getStudentByEvent(String eventId) {
+    public static Set<Student> getStudentsByEvent(String eventId) {
         Set <Student> result = new HashSet<Student>();
         Session session = HibernateUtils.getSessionFactory().getCurrentSession();
         try {
@@ -65,7 +63,7 @@ public class getOperation {
             student = session.get(Student.class, studentId);
 
         } catch (Exception e) {
-            System.err.println("[?]");
+            System.err.println("[Mother?]");
             session.getTransaction().rollback();
             session.close();
             return null;
@@ -118,5 +116,81 @@ public class getOperation {
         }
         session.close();
         return result;
+    }
+
+    public static Subject getSubjectBySubjectCode(String subjectCode) {
+        Subject subject = null;
+        Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+        try {
+            session.getTransaction().begin();
+
+            subject = session.get(Subject.class, subjectCode);
+
+        } catch (Exception e) {
+            System.err.println("[?]");
+            session.getTransaction().rollback();
+            session.close();
+            return null;
+        }
+        session.close();
+        return subject;
+    }
+
+    public static List<Subject> getSubjects() {
+        List <Subject> result = new ArrayList<>();
+        Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+        try {
+            session.getTransaction().begin();
+            CriteriaBuilder builder = session.getCriteriaBuilder();
+
+            CriteriaQuery<Subject> criteriaQuery = builder
+                    .createQuery(Subject.class);
+            criteriaQuery.from(Subject.class);
+            result = session.createQuery(criteriaQuery)
+                    .getResultList();
+        } catch (Exception e) {
+            System.err.println("[?]");
+            session.getTransaction().rollback();
+            session.close();
+            return null;
+        }
+        session.close();
+        return result;
+    }
+
+    public static Set<StudentSubject> getSubjectsByStudent(Student student) {
+        Set<StudentSubject> subjects = new HashSet<>();
+        Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+        try {
+            session.getTransaction().begin();
+
+            subjects = student.getSubjectSet();
+
+        } catch (Exception e) {
+            System.err.println("[?]");
+            session.getTransaction().rollback();
+            session.close();
+            return null;
+        }
+        session.close();
+        return subjects;
+    }
+
+    public static Set<StudentSubject> getStudentsBySubject(Subject subject) {
+        Set<StudentSubject> subjects = new HashSet<>();
+        Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+        try {
+            session.getTransaction().begin();
+
+            subjects = subject.getStudentsSet();
+
+        } catch (Exception e) {
+            System.err.println("[?]");
+            session.getTransaction().rollback();
+            session.close();
+            return null;
+        }
+        session.close();
+        return subjects;
     }
 }
