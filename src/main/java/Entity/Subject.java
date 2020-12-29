@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name= "subjects")
-public class Subjects {
+@Table(name= "subject")
+public class Subject {
     @Id
     @Column(name = "subjectCode", length = 100)
     private String subjectCode;
@@ -36,19 +36,19 @@ public class Subjects {
     @Column(name="year")
     private String year;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "subjectsSet")
-    private Set<Student> studentsSet = new HashSet<>();
+//    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "subjectsSet")
+//    private Set<Student> studentsSet = new HashSet<>();
 
 
-    public Subjects() {
+    public Subject() {
     }
 
-    public Subjects(String subjectCode, String subjectTitle) {
+    public Subject(String subjectCode, String subjectTitle) {
         this.subjectCode = subjectCode;
         this.subjectTitle = subjectTitle;
     }
 
-    public Subjects(String subjectCode, String subjectTitle, Integer credits, boolean status, String teacher) {
+    public Subject(String subjectCode, String subjectTitle, Integer credits, boolean status, String teacher) {
         this.subjectCode = subjectCode;
         this.subjectTitle = subjectTitle;
         this.credits = credits;
@@ -152,13 +152,13 @@ public class Subjects {
         this.year = year;
     }
 
-    public Set<Student> getStudentsSet() {
-        return studentsSet;
-    }
-
-    public void setStudentsSet(Set<Student> studentsSet) {
-        this.studentsSet = studentsSet;
-    }
+//    public Set<Student> getStudentsSet() {
+//        return studentsSet;
+//    }
+//
+//    public void setStudentsSet(Set<Student> studentsSet) {
+//        this.studentsSet = studentsSet;
+//    }
 
 
 }

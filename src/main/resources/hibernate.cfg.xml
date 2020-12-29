@@ -37,7 +37,7 @@
         <mapping class="Entity.Student" />
         <mapping class="Entity.TrainingScores" />
         <mapping class="Entity.Event" />
-        <mapping class="Entity.Subjects" />
+        <mapping class="Entity.Subject" />
 
 
     </session-factory>

@@ -1,9 +1,6 @@
 package test;
 
-import Entity.Event;
-import Entity.Student;
-import Entity.Account;
-import Entity.TrainingScores;
+import Entity.*;
 import Interactive.*;
 
 import java.util.*;
@@ -40,10 +37,26 @@ public class Mainn {
     }
 
     public static void addTrainingScore() {
-        TrainingScores trainingScore = new TrainingScores("02/2019-2020", 90);
-        boolean ok = addOperation.addTrainingScores("18001131", trainingScore);
+        TrainingScores.TrainingScoresId id =
+                new TrainingScores.TrainingScoresId(
+                        getOperation.getStudentByStudentId("18001132"), "01/2019-2020");
+        TrainingScores trainingScore = new TrainingScores(id, 90);
+        boolean ok = addOperation.addTrainingScoresByStudentId(trainingScore);
         System.out.println("add trainingscore is " + ok);
 
+        TrainingScores.TrainingScoresId id1 =
+                new TrainingScores.TrainingScoresId(
+                        getOperation.getStudentByStudentId("18001132"), "02/2019-2020");
+        TrainingScores trainingScore1 = new TrainingScores(id1, 99);
+        boolean ok1 = addOperation.addTrainingScoresByStudentId(trainingScore1);
+        System.out.println("add trainingscore is " + ok1);
+
+        TrainingScores.TrainingScoresId id2 =
+                new TrainingScores.TrainingScoresId(
+                        getOperation.getStudentByStudentId("18001131"), "01/2019-2020");
+        TrainingScores trainingScore2 = new TrainingScores(id2, 100);
+        boolean ok2 = addOperation.addTrainingScoresByStudentId(trainingScore2);
+        System.out.println("add trainingscore is " + ok2);
     }
 
     public static void addEvent() {
@@ -110,11 +123,27 @@ public class Mainn {
 //        themthongtinsinhvientheomasinhvien();
 //        thaydoidiemGPA();
 //        deleteAccount();
-        addTrainingScore();
+//        addTrainingScore();
+        viewTrainingScore();
 //        addEvent();
 //        addEventStudentId();
 //        System.out.println("heeloo");
 //        getEventStudentId();
+    }
+
+    private static void viewTrainingScore() {
+        List<TrainingScores> trainingScoresList = getOperation
+                .getTrainingScoresByStudentId("18001132");
+        for (TrainingScores t: trainingScoresList) {
+            System.out.println(t);
+        }
+
+        List <Student> students = getOperation
+                .getStudentsBySemYear("01/2019-2020");
+        for (Student student: students) {
+            System.out.println(student);
+        }
+
     }
 }
 
