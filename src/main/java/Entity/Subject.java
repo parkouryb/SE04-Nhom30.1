@@ -17,8 +17,6 @@ public class Subject {
 
     @Column(name = "credits")
     private Integer credits;
-    @Column(name = "status")
-    private boolean status;
     @Column(name = "teacher")
     private String teacher;
     @Column(name = "type")
@@ -36,9 +34,8 @@ public class Subject {
     @Column(name="year")
     private String year;
 
-//    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "subjectsSet")
-//    private Set<Student> studentsSet = new HashSet<>();
-
+    @OneToMany(mappedBy = "id.subject", fetch = FetchType.EAGER)
+    private Set<StudentSubject> studentsSet = new HashSet<>();
 
     public Subject() {
     }
@@ -52,7 +49,6 @@ public class Subject {
         this.subjectCode = subjectCode;
         this.subjectTitle = subjectTitle;
         this.credits = credits;
-        this.status = status;
         this.teacher = teacher;
     }
 
@@ -78,14 +74,6 @@ public class Subject {
 
     public void setCredits(Integer credits) {
         this.credits = credits;
-    }
-
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
     }
 
     public String getTeacher() {
@@ -152,13 +140,19 @@ public class Subject {
         this.year = year;
     }
 
-//    public Set<Student> getStudentsSet() {
-//        return studentsSet;
-//    }
-//
-//    public void setStudentsSet(Set<Student> studentsSet) {
-//        this.studentsSet = studentsSet;
-//    }
+    public Set<StudentSubject> getStudentsSet() {
+        return studentsSet;
+    }
 
+    public void setStudentsSet(Set<StudentSubject> studentsSet) {
+        this.studentsSet = studentsSet;
+    }
 
+    @Override
+    public String toString() {
+        return "Subject{" +
+                "subjectCode='" + subjectCode + '\'' +
+                ", subjectTitle='" + subjectTitle + '\'' +
+                '}';
+    }
 }

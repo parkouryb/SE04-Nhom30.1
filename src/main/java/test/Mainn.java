@@ -108,7 +108,7 @@ public class Mainn {
             System.out.println("18001131 " + event);
         }
         Event event1 = new Event("HDZ1", "Hoa Hau Hoan Vu");
-        Set<Student> students = getOperation.getStudentByEvent("HDZ1");
+        Set<Student> students = getOperation.getStudentsByEvent("HDZ1");
         if (students == null) {
             System.out.println("null value");
             return;
@@ -124,11 +124,75 @@ public class Mainn {
 //        thaydoidiemGPA();
 //        deleteAccount();
 //        addTrainingScore();
-        viewTrainingScore();
+//        viewTrainingScore();
 //        addEvent();
 //        addEventStudentId();
-//        System.out.println("heeloo");
 //        getEventStudentId();
+//        addSubjects();
+//        viewSubjects();
+        addSubjectsToStudent();
+    }
+
+    private static void addSubjectsToStudent() {
+        Subject subject1 = getOperation.getSubjectBySubjectCode("MAT0001");
+        Subject subject2 = getOperation.getSubjectBySubjectCode("MAT0002");
+        Subject subject3 = getOperation.getSubjectBySubjectCode("MAT0030");
+        Subject subject4 = getOperation.getSubjectBySubjectCode("INT0004");
+        Subject subject5 = getOperation.getSubjectBySubjectCode("POL0012");
+
+        Student student1 = getOperation.getStudentByStudentId("18001131");
+        Student student2 = getOperation.getStudentByStudentId("18001132");
+
+        StudentSubject studentSubject1 = new StudentSubject(
+                new StudentSubject.StudentSubjectId(student1, subject1), true);
+        StudentSubject studentSubject2 = new StudentSubject(
+                new StudentSubject.StudentSubjectId(student1, subject2), false);
+        StudentSubject studentSubject3 = new StudentSubject(
+                new StudentSubject.StudentSubjectId(student2, subject3), true);
+        StudentSubject studentSubject4 = new StudentSubject(
+                new StudentSubject.StudentSubjectId(student2, subject4), false);
+        StudentSubject studentSubject5 = new StudentSubject(
+                new StudentSubject.StudentSubjectId(student2, subject5), false);
+        StudentSubject studentSubject6 = new StudentSubject(
+                new StudentSubject.StudentSubjectId(student2, subject2), true);
+
+        List <StudentSubject> studentSubjects = new ArrayList<>();
+        studentSubjects.add(studentSubject1);
+        studentSubjects.add(studentSubject2);
+        studentSubjects.add(studentSubject3);
+        studentSubjects.add(studentSubject4);
+        studentSubjects.add(studentSubject5);
+        studentSubjects.add(studentSubject6);
+
+        for (StudentSubject studentSubject: studentSubjects) {
+            boolean ok = addOperation.addSubjectStudent(studentSubject);
+            System.out.println("add stusub " + studentSubject + " : " + ok);
+        }
+    }
+
+    private static void viewSubjects() {
+        List<Subject> subjects = getOperation.getSubjects();
+        for (Subject subject:subjects) {
+            System.out.println(subject);
+        }
+    }
+
+    private static void addSubjects() {
+        Subject subject1 = new Subject("MAT0001", "Giai tich 1");
+        Subject subject2 = new Subject("MAT0002", "Giai tich 2");
+        Subject subject3 = new Subject("INT0004", "Tin hoc 4");
+        Subject subject4 = new Subject("POL0012", "Duong loi cach mang");
+        Subject subject5 = new Subject("MAT0030", "Giai tich so");
+        List <Subject> subjects = new ArrayList<>();
+        subjects.add(subject1);
+        subjects.add(subject2);
+        subjects.add(subject3);
+        subjects.add(subject4);
+        subjects.add(subject5);
+        for (Subject subject: subjects) {
+            boolean ok = addOperation.addSubject(subject);
+            System.out.println("add " + subject + " : " + ok);
+        }
     }
 
     private static void viewTrainingScore() {
@@ -145,5 +209,5 @@ public class Mainn {
         }
 
     }
-}
+ }
 

@@ -38,6 +38,7 @@
         <mapping class="Entity.TrainingScores" />
         <mapping class="Entity.Event" />
         <mapping class="Entity.Subject" />
+        <mapping class="Entity.StudentSubject" />
 
 
     </session-factory>

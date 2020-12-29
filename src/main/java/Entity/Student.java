@@ -41,12 +41,8 @@ public class Student implements Serializable {
     )
     private Set<Event> eventSet = new HashSet<>();
 
-//    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//    @JoinTable(name = "student_subject",
-//            joinColumns = {@JoinColumn(name = "studentId")},
-//            inverseJoinColumns = {@JoinColumn(name = "subjectCode")}
-//    )
-//    private Set<Subject> subjectSet = new HashSet<>();
+    @OneToMany(mappedBy = "id.student", fetch = FetchType.EAGER)
+    private Set<StudentSubject> subjectSet = new HashSet<>();
 
     @Column(name = "creditsCount")
     private Integer creditsCount = 0;
@@ -162,6 +158,14 @@ public class Student implements Serializable {
 
     public void setCreditsCount(Integer creditsCount) {
         this.creditsCount = creditsCount;
+    }
+
+    public Set<StudentSubject> getSubjectSet() {
+        return subjectSet;
+    }
+
+    public void setSubjectSet(Set<StudentSubject> subjectSet) {
+        this.subjectSet = subjectSet;
     }
 
     @Override
