@@ -2,10 +2,7 @@ package Entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name="student")
@@ -34,23 +31,18 @@ public class Student implements Serializable {
     @OneToOne(mappedBy = "student", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Account account;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "st_fid", referencedColumnName = "studentId")
-    private Set<TrainingScores> trainingScores = new HashSet<TrainingScores>();
+    @OneToMany(mappedBy = "id.student", fetch = FetchType.EAGER)
+    private List<TrainingScores> trainingScores = new ArrayList<TrainingScores>();
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "student_event",
             joinColumns = { @JoinColumn(name = "studentId")},
             inverseJoinColumns = { @JoinColumn(name = "eventId")}
     )
     private Set<Event> eventSet = new HashSet<>();
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "student_subjects",
-            joinColumns = {@JoinColumn(name = "studentId")},
-            inverseJoinColumns = {@JoinColumn(name = "subjectCode")}
-    )
-    private Set<Subjects> subjectsSet = new HashSet<>();
+    @OneToMany(mappedBy = "id.student", fetch = FetchType.EAGER)
+    private Set<StudentSubject> subjectSet = new HashSet<>();
 
     @Column(name = "creditsCount")
     private Integer creditsCount = 0;
@@ -96,11 +88,11 @@ public class Student implements Serializable {
         this.name = name;
     }
 
-    public Set<TrainingScores> getTrainingScores() {
+    public List<TrainingScores> getTrainingScores() {
         return trainingScores;
     }
 
-    public void setTrainingScores(Set<TrainingScores> trainingScores) {
+    public void setTrainingScores(List<TrainingScores> trainingScores) {
         this.trainingScores = trainingScores;
     }
 
@@ -160,20 +152,20 @@ public class Student implements Serializable {
         this.GPA = GPA;
     }
 
-    public Set<Subjects> getSubjectsSet() {
-        return subjectsSet;
-    }
-
-    public void setSubjectsSet(Set<Subjects> subjectsSet) {
-        this.subjectsSet = subjectsSet;
-    }
-
     public Integer getCreditsCount() {
         return creditsCount;
     }
 
     public void setCreditsCount(Integer creditsCount) {
         this.creditsCount = creditsCount;
+    }
+
+    public Set<StudentSubject> getSubjectSet() {
+        return subjectSet;
+    }
+
+    public void setSubjectSet(Set<StudentSubject> subjectSet) {
+        this.subjectSet = subjectSet;
     }
 
     @Override
