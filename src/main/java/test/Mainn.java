@@ -130,7 +130,30 @@ public class Mainn {
 //        getEventStudentId();
 //        addSubjects();
 //        viewSubjects();
-        addSubjectsToStudent();
+//        addSubjectsToStudent();
+        viewStudentSubject();
+    }
+
+    private static void viewStudentSubject() {
+        Student student1 = getOperation.getStudentByStudentId("18001131");
+        Student student2 = getOperation.getStudentByStudentId("18001132");
+
+        Set<StudentSubject> subjects1 = getOperation.getSubjectsByStudent(student1);
+        Set<StudentSubject> subjects2 = getOperation.getSubjectsByStudent(student2);
+
+        for (StudentSubject subject: subjects1) {
+            System.out.println(student1 + " get subjects" + subject);
+        }
+        for (StudentSubject subject: subjects2) {
+            System.out.println(student2 + " get subjects" + subject);
+        }
+
+        Subject subject = getOperation.getSubjectBySubjectCode("MAT0002");
+
+        Set<StudentSubject> students1 = getOperation.getStudentsBySubject(subject);
+        for (StudentSubject student: students1) {
+            System.out.println(subject + " get student " + student);
+        }
     }
 
     private static void addSubjectsToStudent() {

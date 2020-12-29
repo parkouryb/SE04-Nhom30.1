@@ -1,9 +1,6 @@
 package Interactive;
 
-import Entity.Event;
-import Entity.Student;
-import Entity.Subject;
-import Entity.TrainingScores;
+import Entity.*;
 import Hibernate.HibernateUtils;
 import org.hibernate.Session;
 
@@ -66,7 +63,7 @@ public class getOperation {
             student = session.get(Student.class, studentId);
 
         } catch (Exception e) {
-            System.err.println("[?]");
+            System.err.println("[Mother?]");
             session.getTransaction().rollback();
             session.close();
             return null;
@@ -159,5 +156,41 @@ public class getOperation {
         }
         session.close();
         return result;
+    }
+
+    public static Set<StudentSubject> getSubjectsByStudent(Student student) {
+        Set<StudentSubject> subjects = new HashSet<>();
+        Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+        try {
+            session.getTransaction().begin();
+
+            subjects = student.getSubjectSet();
+
+        } catch (Exception e) {
+            System.err.println("[?]");
+            session.getTransaction().rollback();
+            session.close();
+            return null;
+        }
+        session.close();
+        return subjects;
+    }
+
+    public static Set<StudentSubject> getStudentsBySubject(Subject subject) {
+        Set<StudentSubject> subjects = new HashSet<>();
+        Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+        try {
+            session.getTransaction().begin();
+
+            subjects = subject.getStudentsSet();
+
+        } catch (Exception e) {
+            System.err.println("[?]");
+            session.getTransaction().rollback();
+            session.close();
+            return null;
+        }
+        session.close();
+        return subjects;
     }
 }

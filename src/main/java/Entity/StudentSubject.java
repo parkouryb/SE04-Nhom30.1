@@ -16,6 +16,9 @@ public class StudentSubject implements Serializable {
         @JoinColumn(name = "subjectCode", insertable = false, updatable = false)
         private Subject subject;
 
+        public StudentSubjectId() {
+        }
+
         public StudentSubjectId(Student student, Subject subject) {
             this.student = student;
             this.subject = subject;
@@ -49,6 +52,14 @@ public class StudentSubject implements Serializable {
         public int hashCode() {
             return Objects.hash(student, subject);
         }
+
+        @Override
+        public String toString() {
+            return "StudentSubjectId{" +
+                    "studentId=" + student.getStudentId() +
+                    ", subjectCode=" + subject.getSubjectCode() +
+                    '}';
+        }
     }
 
     @EmbeddedId
@@ -79,4 +90,11 @@ public class StudentSubject implements Serializable {
         this.status = status;
     }
 
+    @Override
+    public String toString() {
+        return "StudentSubject{" +
+                "id=" + id +
+                ", status=" + status +
+                '}';
+    }
 }
