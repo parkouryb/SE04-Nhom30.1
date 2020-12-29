@@ -54,7 +54,7 @@ public class changeOperation {
             session.getTransaction().begin();
             Student student = session.get(Student.class, studentId);
             // set
-            Set<TrainingScores> trainingScores = student.getTrainingScores();
+            List<TrainingScores> trainingScores = student.getTrainingScores();
 
             session.save(student);
             session.getTransaction().commit();
@@ -71,7 +71,7 @@ public class changeOperation {
         try {
             session.getTransaction().begin();
             Student student = session.get(Student.class, studentId);
-            Set<TrainingScores> trainingScores = student.getTrainingScores();
+            List<TrainingScores> trainingScores = student.getTrainingScores();
             // set
 
             session.save(student);

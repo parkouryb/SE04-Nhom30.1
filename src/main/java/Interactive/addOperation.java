@@ -61,11 +61,11 @@ public class addOperation {
         return true;
     }
 
-    public static boolean addSubject(Subjects subjects) {
+    public static boolean addSubject(Subject subject) {
         Session session = HibernateUtils.getSessionFactory().getCurrentSession();
         try {
             session.getTransaction().begin();
-            session.save(subjects);
+            session.save(subject);
             session.getTransaction().commit();
         } catch (Exception e) {
             System.err.println("[ERROR]");
@@ -75,14 +75,16 @@ public class addOperation {
         return true;
     }
 
-    public static boolean addTrainingScores(String studentId, TrainingScores trainingScore) {
+    public static boolean addTrainingScoresByStudentId(TrainingScores trainingScore) {
+        Student student = trainingScore.getId().getStudent();
+        System.out.println(student);
         Session session = HibernateUtils.getSessionFactory().getCurrentSession();
         try {
             session.getTransaction().begin();
-            Student student = session.get(Student.class, studentId);
 
-            Set<TrainingScores> trainingScores = student.getTrainingScores();
-            trainingScores.add(trainingScore);
+            assert student != null;
+            student.getTrainingScores().add(trainingScore);
+            session.save(trainingScore);
 
             session.getTransaction().commit();
         } catch (Exception e) {
@@ -111,14 +113,14 @@ public class addOperation {
         return true;
     }
 
-    public static boolean addSubjectStudent(String studentId, Subjects subjects) {
+    public static boolean addSubjectStudent(String studentId, Subject subject) {
         Session session = HibernateUtils.getSessionFactory().getCurrentSession();
         try {
             session.getTransaction().begin();
             Student student = session.get(Student.class, studentId);
 
-            Set <Subjects> subjectsSet = student.getSubjectsSet();
-            subjectsSet.add(subjects);
+//            Set <Subject> subjectSet = student.getSubjectsSet();
+//            subjectSet.add(subject);
 
             session.getTransaction().commit();
         } catch (Exception e) {

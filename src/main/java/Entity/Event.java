@@ -32,8 +32,8 @@ public class Event implements Serializable {
     @Column(name = "status")
     private boolean status;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "eventSet")
-    private Set<Student> studentSet = new HashSet<>();
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "eventSet")
+    private Set<Student> studentSet = new HashSet<Student>();
 
     public Event() {
     }
@@ -117,4 +117,13 @@ public class Event implements Serializable {
         this.studentSet = studentSet;
     }
 
+    @Override
+    public String toString() {
+        return "Event{" +
+                "eventId='" + eventId + '\'' +
+                ", eventName='" + eventName + '\'' +
+                ", requirement=" + requirement +
+                ", status=" + status +
+                '}';
+    }
 }
