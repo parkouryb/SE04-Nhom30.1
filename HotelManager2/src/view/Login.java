@@ -5,8 +5,8 @@
  */
 package view;
 
-import Entity.Account;
-import Services.AccountServicesImp;
+import Entity.*;
+import Services.*;
 
 /**
  *

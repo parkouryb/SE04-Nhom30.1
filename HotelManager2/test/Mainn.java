@@ -1,5 +1,3 @@
-package test;
-
 import Entity.Student;
 import Entity.Account;
 import Entity.TrainingScores;
