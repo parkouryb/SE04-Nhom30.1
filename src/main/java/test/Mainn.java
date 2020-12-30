@@ -119,7 +119,7 @@ public class Mainn {
     }
 
     public static void main(String[] args) throws Exception{
-        dangky();
+//        dangky();
 //        themthongtinsinhvientheomasinhvien();
 //        thaydoidiemGPA();
 //        deleteAccount();
@@ -131,7 +131,7 @@ public class Mainn {
 //        addSubjects();
 //        viewSubjects();
 //        addSubjectsToStudent();
-        viewStudentSubject();
+//        viewStudentSubject();
     }
 
     private static void viewStudentSubject() {
@@ -179,7 +179,7 @@ public class Mainn {
         StudentSubject studentSubject6 = new StudentSubject(
                 new StudentSubject.StudentSubjectId(student2, subject2), true);
 
-        List <StudentSubject> studentSubjects = new ArrayList<>();
+        List <StudentSubject> studentSubjects = new ArrayList<StudentSubject>();
         studentSubjects.add(studentSubject1);
         studentSubjects.add(studentSubject2);
         studentSubjects.add(studentSubject3);
@@ -206,7 +206,7 @@ public class Mainn {
         Subject subject3 = new Subject("INT0004", "Tin hoc 4");
         Subject subject4 = new Subject("POL0012", "Duong loi cach mang");
         Subject subject5 = new Subject("MAT0030", "Giai tich so");
-        List <Subject> subjects = new ArrayList<>();
+        List <Subject> subjects = new ArrayList<Subject>();
         subjects.add(subject1);
         subjects.add(subject2);
         subjects.add(subject3);

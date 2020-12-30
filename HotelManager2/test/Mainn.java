@@ -29,9 +29,9 @@ public class Mainn {
 
     public static void addTrainingScore() {
 
-        TrainingScores trainingScore = new TrainingScores("02/2019-2020", 90);
-        boolean ok = addOperation.addTrainingScores("18001131", trainingScore);
-        System.out.println("add trainingscore is " + ok);
+//        TrainingScores trainingScore = new TrainingScores("02/2019-2020", 90);
+//        boolean ok = addOperation.addTrainingScores("18001131", trainingScore);
+//        System.out.println("add trainingscore is " + ok);
 
     }
 

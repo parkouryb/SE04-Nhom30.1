@@ -2,7 +2,7 @@ package Entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
-
+// vcl v? nhà ?i circle k làm gì v?y b?n :( 
 @Entity
 @Table(
         name = "account",

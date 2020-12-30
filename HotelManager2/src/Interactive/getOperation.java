@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Set;
 
 public class getOperation {
-	public static <T> List<T> loadAllData(Class<T> type, Session session) {
+    public static <T> List<T> loadAllData(Class<T> type, Session session) {
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<T> criteria = builder.createQuery(type);
         criteria.from(type);

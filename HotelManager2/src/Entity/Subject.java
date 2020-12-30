@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name= "subjects")
-public class Subjects {
+@Table(name= "subject")
+public class Subject {
     @Id
     @Column(name = "subjectCode", length = 100)
     private String subjectCode;
@@ -17,8 +17,6 @@ public class Subjects {
 
     @Column(name = "credits")
     private Integer credits;
-    @Column(name = "status")
-    private boolean status;
     @Column(name = "teacher")
     private String teacher;
     @Column(name = "type")
@@ -36,23 +34,21 @@ public class Subjects {
     @Column(name="year")
     private String year;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "subjectsSet")
-    private Set<Student> studentsSet = new HashSet<>();
+    @OneToMany(mappedBy = "id.subject", fetch = FetchType.EAGER)
+    private Set<StudentSubject> studentsSet = new HashSet<>();
 
-
-    public Subjects() {
+    public Subject() {
     }
 
-    public Subjects(String subjectCode, String subjectTitle) {
+    public Subject(String subjectCode, String subjectTitle) {
         this.subjectCode = subjectCode;
         this.subjectTitle = subjectTitle;
     }
 
-    public Subjects(String subjectCode, String subjectTitle, Integer credits, boolean status, String teacher) {
+    public Subject(String subjectCode, String subjectTitle, Integer credits, boolean status, String teacher) {
         this.subjectCode = subjectCode;
         this.subjectTitle = subjectTitle;
         this.credits = credits;
-        this.status = status;
         this.teacher = teacher;
     }
 
@@ -78,14 +74,6 @@ public class Subjects {
 
     public void setCredits(Integer credits) {
         this.credits = credits;
-    }
-
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
     }
 
     public String getTeacher() {
@@ -152,13 +140,19 @@ public class Subjects {
         this.year = year;
     }
 
-    public Set<Student> getStudentsSet() {
+    public Set<StudentSubject> getStudentsSet() {
         return studentsSet;
     }
 
-    public void setStudentsSet(Set<Student> studentsSet) {
+    public void setStudentsSet(Set<StudentSubject> studentsSet) {
         this.studentsSet = studentsSet;
     }
 
-
+    @Override
+    public String toString() {
+        return "Subject{" +
+                "subjectCode='" + subjectCode + '\'' +
+                ", subjectTitle='" + subjectTitle + '\'' +
+                '}';
+    }
 }

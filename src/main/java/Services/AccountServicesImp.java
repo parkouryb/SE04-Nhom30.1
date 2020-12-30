@@ -16,24 +16,22 @@ import java.util.*;
  * @author Cam Nhung
  */
 public class AccountServicesImp implements AccountServicesInterface{
-
     @Override
     public Account authenAccount(String username, String password) {
-    	Session session = HibernateUtils.getSessionFactory().getCurrentSession();
-    	try {
-			session.getTransaction().begin();
-			List<Account> accs = getOperation.loadAllData(Account.class, session);
-			for (Account account : accs) {
-				if (account.getUsername().equals(username) && 
-						account.getPassword().equals(password)) {
-					System.out.println("tag");
-		            return new Account();
-				}
-			}
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-    	session.close();
+        Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+        try {
+            session.getTransaction().begin();
+            List<Account> accs = getOperation.loadAllData(Account.class, session);
+            for (Account acc : accs) {
+                if(acc.getUsername().equals(username) &&
+                        acc.getPassword().equals(password)){
+                    System.out.println("login OK");
+                    return new Account();
+                }
+            }
+        } catch (Exception e) {
+        }
+        session.close();
         return null;
     }
 
@@ -48,7 +46,7 @@ public class AccountServicesImp implements AccountServicesInterface{
 //        List<Student> students = new ArrayList<>();
 //        try {
 //            session.getTransaction().begin();
-//            students = getOperation.loadAllData(Student.class, (org.hibernate.Session) session);
+//            students = getOperation.loadAllData(Student.class, session);
 //
 //        } catch (Exception e) {
 //            System.err.println("[ERROR]");

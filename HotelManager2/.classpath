@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="test"/>
+	<classpathentry kind="lib" path="libs/hibernate-core-5.4.21.Final.jar"/>
+	<classpathentry kind="lib" path="libs/hibernate-jpa-2.1-api-1.0.2.Final.jar"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>

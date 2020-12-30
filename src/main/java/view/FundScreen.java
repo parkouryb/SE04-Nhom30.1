@@ -5,20 +5,18 @@
  */
 package view;
 
-import Entity.Account;
-
 /**
  *
  * @author Cam Nhung
  */
-public class ClassListScreen extends javax.swing.JFrame {
+public class FundScreen extends javax.swing.JFrame {
 
 //    private boolean toggleStatus = false;
 
     /**
      * Creates new form UserProfileScreen
      */
-    public ClassListScreen() {
+    public FundScreen() {
         initComponents();
 //        panelToggle.setVisible(toggleStatus);
     }
@@ -47,11 +45,10 @@ public class ClassListScreen extends javax.swing.JFrame {
         btnStage = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Danh sách lớp học");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setText("ClassList");
+        jLabel2.setText("FUND");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -83,7 +80,7 @@ public class ClassListScreen extends javax.swing.JFrame {
         panelToggle.setBackground(new java.awt.Color(102, 205, 170));
         panelToggle.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        btnSchedule.setText("Thời khoá biểu (edit - view)");
+        btnSchedule.setText("Thời khóa biểu (edit - view)");
         btnSchedule.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnScheduleActionPerformed(evt);
@@ -220,7 +217,8 @@ public class ClassListScreen extends javax.swing.JFrame {
 
     private void btnToggleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnToggleActionPerformed
         // TODO add your handling code here:
-    UserProfileScreen.main(null);
+        //show panelToggle when user click on
+        UserProfileScreen.main(null);
         this.dispose();
     }//GEN-LAST:event_btnToggleActionPerformed
 
@@ -262,7 +260,7 @@ public class ClassListScreen extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        Login.userCredit = null;
+                Login.userCredit = null;
         this.dispose();
         Login.main(null);
     }//GEN-LAST:event_jButton7ActionPerformed
@@ -284,13 +282,13 @@ public class ClassListScreen extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ClassListScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FundScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ClassListScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FundScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ClassListScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FundScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ClassListScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FundScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -298,7 +296,7 @@ public class ClassListScreen extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ClassListScreen().setVisible(true);
+                new FundScreen().setVisible(true);
             }
         });
     }
