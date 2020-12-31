@@ -1,9 +1,11 @@
 package test;
 
 import Entity.*;
+import Hibernate.HibernateUtils;
 import Interactive.*;
 
 import java.util.*;
+import org.hibernate.Session;
 
 
 public class Mainn {
@@ -132,6 +134,16 @@ public class Mainn {
 //        viewSubjects();
 //        addSubjectsToStudent();
 //        viewStudentSubject();
+
+//        Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+//        try {
+//            Student student = getOperation.getStudentByStudentId("18001131");
+//            System.out.println(student);
+//        } catch (Exception e) {
+//        }
+//        session.close();
+        String currentDir = System.getProperty("user.dir");
+        System.out.println("Current dir using System:" +currentDir);
     }
 
     private static void viewStudentSubject() {

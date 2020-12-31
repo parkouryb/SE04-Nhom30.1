@@ -7,6 +7,14 @@ package view;
 
 import Entity.*;
 import Services.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,6 +26,7 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
+    
     public Login() {
         initComponents();
     }
@@ -29,6 +38,10 @@ public class Login extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     
+    // Login form
+    private void showMess(String msg) {
+        JOptionPane.showMessageDialog(null, msg);
+    }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -61,6 +74,11 @@ public class Login extends javax.swing.JFrame {
 
         btnForgot.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnForgot.setText("Forgot your password ?");
+        btnForgot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnForgotActionPerformed(evt);
+            }
+        });
 
         btnLogin.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnLogin.setText("Login");
@@ -130,6 +148,12 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void writeFile(String fileName, String msg) throws FileNotFoundException, IOException{
+        FileWriter fw = new FileWriter(fileName);
+        fw.write(msg);
+        fw.close();
+    }
+    
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
         //field not filled
@@ -138,15 +162,25 @@ public class Login extends javax.swing.JFrame {
         if (txtUsername.getText() != null && txtUsername.getText().equals("")
                 || txtPass.getText() != null && txtPass.getText().equals("")) {
             System.out.println("FUCK");
+            showMess("Blank username or password");
         } else if ((userCredit = acc.authenAccount(txtUsername.getText(), txtPass.getText())) == null) {
             //wrong password
             System.out.println("Wrong password or username");
+            showMess("Wrong username or password");
             txtPass.setText("");
         } else {
-            //login success
-            System.out.println("login done");
-            UserProfileScreen.main(null);
-            this.dispose();
+            try {
+                //login success
+                System.out.println("login done");
+                //showMess(userCredit.toString());
+                //System.out.println(userCredit);
+                String currentDir = System.getProperty("user.dir") + "\\loginID.txt";
+                writeFile(currentDir, userCredit.getStudentId());
+                UserProfileScreen.main(null);
+                this.dispose();
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
@@ -157,6 +191,12 @@ public class Login extends javax.swing.JFrame {
             btnLoginActionPerformed(null);
         }
     }//GEN-LAST:event_txtPassKeyPressed
+
+    private void btnForgotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnForgotActionPerformed
+        // TODO add your handling code here:
+        showMess("This feature is not done!" + "\n" 
+                    + "Please try later!");
+    }//GEN-LAST:event_btnForgotActionPerformed
 
     /**
      * @param args the command line arguments

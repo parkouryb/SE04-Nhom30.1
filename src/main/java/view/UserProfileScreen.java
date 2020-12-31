@@ -5,6 +5,18 @@
  */
 package view;
 
+import Entity.Student;
+import Hibernate.HibernateUtils;
+import Interactive.getOperation;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Date;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import org.hibernate.Session;
+
 /**
  *
  * @author Cam Nhung
@@ -187,7 +199,7 @@ public class UserProfileScreen extends javax.swing.JFrame {
         panelToggle.setBackground(new java.awt.Color(102, 205, 170));
         panelToggle.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        btnSchedule.setText("Thời khóa biểu (edit - view)");
+        btnSchedule.setText("Th�?i khóa biểu (edit - view)");
         btnSchedule.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnScheduleActionPerformed(evt);
@@ -215,7 +227,7 @@ public class UserProfileScreen extends javax.swing.JFrame {
             }
         });
 
-        btnTrainingReport.setText("Điểm rèn luyện");
+        btnTrainingReport.setText("�?iểm rèn luyện");
         btnTrainingReport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTrainingReportActionPerformed(evt);
@@ -229,7 +241,7 @@ public class UserProfileScreen extends javax.swing.JFrame {
             }
         });
 
-        btnStage.setText("Tiến độ môn học (học phần)");
+        btnStage.setText("Tiến độ môn h�?c (h�?c phần)");
         btnStage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnStageActionPerformed(evt);
@@ -325,14 +337,47 @@ public class UserProfileScreen extends javax.swing.JFrame {
     private void btnToggleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnToggleActionPerformed
         // TODO add your handling code here:
         //show panelToggle when user click on
+        String filePath = System.getProperty("user.dir") + "\\loginID.txt";
+        Scanner scan = null;
+        String studentId = null;
+        try {
+            scan = new Scanner(new File(filePath));
+            studentId = scan.nextLine();
+            scan.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(UserProfileScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try {
+            Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+            Student student = getOperation.getStudentByStudentId(studentId);
+            showMess(studentId);
+            setAllText(student);
+            session.close();
+        } catch (Exception e) {
+        }
+        
         UserProfileScreen.main(null);
-        this.dispose();
+//        new UserProfileScreen().setVisible(true);
+//        this.dispose();
     }//GEN-LAST:event_btnToggleActionPerformed
-
+    
+    private void showMess(String msg){
+        JOptionPane.showMessageDialog(null,msg);
+    }
+    private void setAllText(Student student){
+        jTextField1.setText(student.getStudentId());
+        jTextField2.setText(student.getName());
+        jTextField2.setEditable(false);
+        jTextField3.setText(student.getGender());
+//        String dateOfbirth = Date.toString(student.getBirthday());
+//        jTextField4.setText();
+    }
+    
     private void btnStageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStageActionPerformed
         // TODO add your handling code here:
         StageScreen.main(null);
-this.dispose();
+        this.dispose();
     }//GEN-LAST:event_btnStageActionPerformed
 
     private void btnScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnScheduleActionPerformed
