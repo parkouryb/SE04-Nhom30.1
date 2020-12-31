@@ -22,7 +22,7 @@ import org.hibernate.Session;
  * @author Cam Nhung
  */
 public class UserProfileScreen extends javax.swing.JFrame {
-
+    private static String filePath = System.getProperty("user.dir") + "\\loginID.txt";
 //    private boolean toggleStatus = false;
     /**
      * Creates new form MainScreen
@@ -94,6 +94,24 @@ public class UserProfileScreen extends javax.swing.JFrame {
         jLabel8.setText("Email");
 
         jLabel9.setText("GPA");
+
+        jTextField1.setEditable(false);
+
+        jTextField2.setEditable(false);
+
+        jTextField3.setEditable(false);
+
+        jTextField4.setEditable(false);
+
+        jTextField5.setEditable(false);
+
+        jTextField6.setEditable(false);
+
+        jTextField7.setEditable(false);
+
+        jTextField8.setEditable(false);
+
+        jTextField9.setEditable(false);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -199,35 +217,35 @@ public class UserProfileScreen extends javax.swing.JFrame {
         panelToggle.setBackground(new java.awt.Color(102, 205, 170));
         panelToggle.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        btnSchedule.setText("Thá»?i khÃ³a biá»ƒu (edit - view)");
+        btnSchedule.setText("Th?i khóa bi?u (edit - view)");
         btnSchedule.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnScheduleActionPerformed(evt);
             }
         });
 
-        btnClassList.setText("Danh sÃ¡ch lá»›p");
+        btnClassList.setText("Danh sách l?p");
         btnClassList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClassListActionPerformed(evt);
             }
         });
 
-        btnFund.setText("Quá»¹ lá»›p");
+        btnFund.setText("Qu? l?p");
         btnFund.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFundActionPerformed(evt);
             }
         });
 
-        btnEvent.setText("CÃ¡c sá»± kiá»‡n ");
+        btnEvent.setText("Các s? ki?n ");
         btnEvent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEventActionPerformed(evt);
             }
         });
 
-        btnTrainingReport.setText("Ä?iá»ƒm rÃ¨n luyá»‡n");
+        btnTrainingReport.setText("?i?m rèn luy?n");
         btnTrainingReport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTrainingReportActionPerformed(evt);
@@ -241,7 +259,7 @@ public class UserProfileScreen extends javax.swing.JFrame {
             }
         });
 
-        btnStage.setText("Tiáº¿n Ä‘á»™ mÃ´n há»?c (há»?c pháº§n)");
+        btnStage.setText("Ti?n ?? môn h?c (h?c ph?n)");
         btnStage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnStageActionPerformed(evt);
@@ -333,13 +351,9 @@ public class UserProfileScreen extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnToggleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnToggleActionPerformed
-        // TODO add your handling code here:
-        //show panelToggle when user click on
-        String filePath = System.getProperty("user.dir") + "\\loginID.txt";
+    private String readID(){
         Scanner scan = null;
-        String studentId = null;
+        String studentId = "";
         try {
             scan = new Scanner(new File(filePath));
             studentId = scan.nextLine();
@@ -347,19 +361,28 @@ public class UserProfileScreen extends javax.swing.JFrame {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(UserProfileScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        try {
-            Session session = HibernateUtils.getSessionFactory().getCurrentSession();
-            Student student = getOperation.getStudentByStudentId(studentId);
-            showMess(studentId);
-            setAllText(student);
-            session.close();
-        } catch (Exception e) {
-        }
-        
-        UserProfileScreen.main(null);
+        return studentId;
+    }
+    private void btnToggleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnToggleActionPerformed
+        // TODO add your handling code here:
+        //show panelToggle when user click on
 //        new UserProfileScreen().setVisible(true);
 //        this.dispose();
+        String studentID = readID();
+        Student student = null;
+        try {
+            while(student == null){
+                Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+                student = getOperation.getStudentByStudentId(studentID);
+                session.close();
+            }
+//            showMess(Float.toString(student.getGPA()));
+        } catch (Exception e) {
+        }
+        finally{
+            System.out.println(student);
+            setAllText(student);
+        }
     }//GEN-LAST:event_btnToggleActionPerformed
     
     private void showMess(String msg){
@@ -368,10 +391,19 @@ public class UserProfileScreen extends javax.swing.JFrame {
     private void setAllText(Student student){
         jTextField1.setText(student.getStudentId());
         jTextField2.setText(student.getName());
-        jTextField2.setEditable(false);
         jTextField3.setText(student.getGender());
-//        String dateOfbirth = Date.toString(student.getBirthday());
-//        jTextField4.setText();
+        String full_dateOfbirth = student.getBirthday().toString();
+        String dateOfbirth = "";
+        for (int i = 0; i < 10; i++) {
+            dateOfbirth += full_dateOfbirth.charAt(i);
+        }
+        jTextField4.setText(dateOfbirth);
+        jTextField5.setText(student.getAddress());
+        jTextField6.setText(student.getClassroom());
+        jTextField7.setText(student.getPhoneNumber());
+        jTextField8.setText(student.getEmail());
+        String gpa_string = Float.toString(student.getGPA());
+        jTextField9.setText(gpa_string);
     }
     
     private void btnStageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStageActionPerformed

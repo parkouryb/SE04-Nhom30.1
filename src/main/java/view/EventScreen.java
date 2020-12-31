@@ -5,6 +5,8 @@
  */
 package view;
 
+import Entity.Student;
+
 /**
  *
  * @author Cam Nhung
@@ -59,7 +61,7 @@ public class EventScreen extends javax.swing.JFrame {
         panelToggle.setBackground(new java.awt.Color(102, 205, 170));
         panelToggle.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        btnSchedule.setText("Thời khóa biểu (edit - view)");
+        btnSchedule.setText("Th�?i khóa biểu (edit - view)");
         btnSchedule.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnScheduleActionPerformed(evt);
@@ -87,7 +89,7 @@ public class EventScreen extends javax.swing.JFrame {
             }
         });
 
-        btnTrainingReport.setText("Điểm rèn luyện");
+        btnTrainingReport.setText("�?iểm rèn luyện");
         btnTrainingReport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTrainingReportActionPerformed(evt);
@@ -101,7 +103,7 @@ public class EventScreen extends javax.swing.JFrame {
             }
         });
 
-        btnStage.setText("Tiến độ môn học (học phần)");
+        btnStage.setText("Tiến độ môn h�?c (h�?c phần)");
         btnStage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnStageActionPerformed(evt);
@@ -236,7 +238,7 @@ public class EventScreen extends javax.swing.JFrame {
 
     private void btnToggleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnToggleActionPerformed
         // TODO add your handling code here:
-        UserProfileScreen.main(null);
+        new UserProfileScreen();
         this.dispose();
     }//GEN-LAST:event_btnToggleActionPerformed
 

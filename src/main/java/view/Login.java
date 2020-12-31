@@ -6,6 +6,8 @@
 package view;
 
 import Entity.*;
+import Hibernate.HibernateUtils;
+import Interactive.getOperation;
 import Services.*;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -15,6 +17,7 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import org.hibernate.Session;
 
 /**
  *
@@ -176,7 +179,8 @@ public class Login extends javax.swing.JFrame {
                 //System.out.println(userCredit);
                 String currentDir = System.getProperty("user.dir") + "\\loginID.txt";
                 writeFile(currentDir, userCredit.getStudentId());
-                UserProfileScreen.main(null);
+                
+                new UserProfileScreen().main(null);
                 this.dispose();
             } catch (IOException ex) {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);

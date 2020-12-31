@@ -3,6 +3,7 @@ package test;
 import Entity.*;
 import Hibernate.HibernateUtils;
 import Interactive.*;
+import java.text.SimpleDateFormat;
 
 import java.util.*;
 import org.hibernate.Session;
@@ -142,8 +143,10 @@ public class Mainn {
 //        } catch (Exception e) {
 //        }
 //        session.close();
-        String currentDir = System.getProperty("user.dir");
-        System.out.println("Current dir using System:" +currentDir);
+//        String currentDir = System.getProperty("user.dir");
+//        System.out.println("Current dir using System:" +currentDir);
+        Date date = new SimpleDateFormat("dd/MM/yyyy").parse("30/01/2020");
+        System.out.println(date.toString());
     }
 
     private static void viewStudentSubject() {
