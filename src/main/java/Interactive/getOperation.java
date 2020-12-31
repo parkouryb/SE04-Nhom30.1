@@ -12,13 +12,14 @@ import java.util.List;
 import java.util.Set;
 
 public class getOperation {
-    private static <T> List<T> loadAllData(Class<T> type, Session session) {
+    public static <T> List<T> loadAllData(Class<T> type, Session session) {
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<T> criteria = builder.createQuery(type);
         criteria.from(type);
         List<T> data = session.createQuery(criteria).getResultList();
         return data;
     }
+
 
     public static Set<Event> getEventsByStudentId(String studentId) {
         Set <Event> result = new HashSet<Event>();
