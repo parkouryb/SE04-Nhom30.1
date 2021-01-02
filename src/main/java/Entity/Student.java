@@ -55,6 +55,19 @@ public class Student implements Serializable {
         this.name = name;
     }
 
+    public Student(String id, String name, String gender, Date birthday, String address, String classroom, String phoneNumber, String email) {
+        this.studentId = id;
+        this.name = name;
+        this.gender = gender;
+        this.birthday = birthday;
+        this.address = address;
+        this.classroom = classroom;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.GPA = (float) 0.0;
+    }
+    
+    
     public Account getAccount() {
         return account;
     }

@@ -145,8 +145,11 @@ public class Mainn {
 //        session.close();
 //        String currentDir = System.getProperty("user.dir");
 //        System.out.println("Current dir using System:" +currentDir);
-        Date date = new SimpleDateFormat("dd/MM/yyyy").parse("30/01/2020");
-        System.out.println(date.toString());
+//        Date date = new SimpleDateFormat("dd/MM/yyyy").parse("30/01/2020");
+//        System.out.println(date.toString());
+        System.out.println(Double.toHexString(10*Math.random()));
+        System.out.println(Double.toHexString(20*Math.random()));
+        System.out.println(Double.toHexString(Math.random()));
     }
 
     private static void viewStudentSubject() {

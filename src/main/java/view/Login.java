@@ -178,7 +178,7 @@ public class Login extends javax.swing.JFrame {
                 //showMess(userCredit.toString());
                 //System.out.println(userCredit);
                 String currentDir = System.getProperty("user.dir") + "\\loginID.txt";
-                writeFile(currentDir, userCredit.getStudentId());
+                writeFile(currentDir, userCredit.getStudentId() + "\n" + Integer.toString(userCredit.getRoot()));
                 
                 new UserProfileScreen().main(null);
                 this.dispose();

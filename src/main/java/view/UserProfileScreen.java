@@ -5,11 +5,15 @@
  */
 package view;
 
+import Entity.Account;
 import Entity.Student;
 import Hibernate.HibernateUtils;
+import Interactive.addOperation;
 import Interactive.getOperation;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -62,6 +66,10 @@ public class UserProfileScreen extends javax.swing.JFrame {
         jTextField8 = new javax.swing.JTextField();
         jTextField9 = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
+        addBtn = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        jTextField10 = new javax.swing.JTextField();
+        clearBtn = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         btnToggle = new javax.swing.JToggleButton();
         panelToggle = new javax.swing.JPanel();
@@ -124,10 +132,33 @@ public class UserProfileScreen extends javax.swing.JFrame {
             .addGap(0, 78, Short.MAX_VALUE)
         );
 
+        addBtn.setText("Add");
+        addBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBtnActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setText("Root");
+
+        jTextField10.setEditable(false);
+        jTextField10.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        clearBtn.setText("clear");
+        clearBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(49, 49, 49)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,37 +170,40 @@ public class UserProfileScreen extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(jLabel7)
                     .addComponent(jLabel8)
-                    .addComponent(jLabel9))
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextField1)
-                                .addComponent(jTextField2)
-                                .addComponent(jTextField6)
-                                .addComponent(jTextField7)
-                                .addComponent(jTextField8)
-                                .addComponent(jTextField9, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE))
-                            .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(89, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTextField1)
+                    .addComponent(jTextField2)
+                    .addComponent(jTextField6)
+                    .addComponent(jTextField7)
+                    .addComponent(jTextField8)
+                    .addComponent(jTextField9, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
+                    .addComponent(jTextField10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(addBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(clearBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
+                .addGap(2, 2, 2)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(16, 16, 16)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -193,15 +227,17 @@ public class UserProfileScreen extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
+                .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
+                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(clearBtn))
+                .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30))
+                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addBtn))
+                .addGap(28, 28, 28))
         );
 
         jPanel2.setBackground(new java.awt.Color(102, 205, 170));
@@ -363,32 +399,105 @@ public class UserProfileScreen extends javax.swing.JFrame {
         }
         return studentId;
     }
+    
+    private int readRoot(){
+        Scanner scan = null;
+        String studentId = "";
+        int root = -1;
+        try {
+            scan = new Scanner(new File(filePath));
+            studentId = scan.nextLine();
+            root = Integer.parseInt(scan.nextLine());
+            scan.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(UserProfileScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return root;
+    }
+    
     private void btnToggleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnToggleActionPerformed
         // TODO add your handling code here:
         //show panelToggle when user click on
 //        new UserProfileScreen().setVisible(true);
 //        this.dispose();
         String studentID = readID();
-        Student student = null;
-        try {
-            while(student == null){
-                Session session = HibernateUtils.getSessionFactory().getCurrentSession();
-                student = getOperation.getStudentByStudentId(studentID);
-                session.close();
+        int root = readRoot();
+        if(root <= 1) {
+            addBtn.setVisible(false);
+            clearBtn.setVisible(false);
+            Student student = null;
+            try {
+                while(student == null){
+                    Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+                    student = getOperation.getStudentByStudentId(studentID);
+                    session.close();
+                }
+    //            showMess(Float.toString(student.getGPA()));
+            } catch (Exception e) {
             }
-//            showMess(Float.toString(student.getGPA()));
-        } catch (Exception e) {
+            finally{
+                System.out.println(student);
+                setAllText(student, root);
+            }
         }
-        finally{
-            System.out.println(student);
-            setAllText(student);
+        else{
+            Student student = null;
+            try {
+                while(student == null){
+                    Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+                    student = getOperation.getStudentByStudentId(studentID);
+                    session.close();
+                }
+    //            showMess(Float.toString(student.getGPA()));
+            } catch (Exception e) {
+            }
+            finally{
+                System.out.println(student);
+                setAllText(student, root);
+            }
         }
     }//GEN-LAST:event_btnToggleActionPerformed
     
     private void showMess(String msg){
         JOptionPane.showMessageDialog(null,msg);
     }
-    private void setAllText(Student student){
+    
+    private boolean isFinishInfor(Student student){
+        if(student.getName() == null || student.getAddress() == null || 
+                student.getBirthday() == null || student.getClassroom() == null 
+                || student.getEmail() == null || student.getPhoneNumber() == null){
+            return false;
+        } 
+        return true;
+    }
+    
+    private boolean FinishInfor(Student student){
+        boolean flag = false;
+        if(jTextField2.getText().length() == 0){
+            jTextField2.setEditable(true);
+        }
+        if(jTextField5.getText().length() == 0){
+            jTextField5.setEditable(true);
+        }
+        if(jTextField3.getText().length() == 0){
+            jTextField3.setEditable(true);
+        }
+        if(jTextField4.getText().length() == 0){
+            jTextField4.setEditable(true);
+        }
+        if(jTextField6.getText().length() == 0){
+            jTextField6.setEditable(true);
+        }
+        if(jTextField7.getText().length() == 0){
+            jTextField7.setEditable(true);
+        }
+        if(jTextField8.getText().length() == 0){
+            jTextField8.setEditable(true);
+        }
+        return true;
+    }
+    
+    private void setAllText(Student student, int root){
         jTextField1.setText(student.getStudentId());
         jTextField2.setText(student.getName());
         jTextField3.setText(student.getGender());
@@ -404,6 +513,8 @@ public class UserProfileScreen extends javax.swing.JFrame {
         jTextField8.setText(student.getEmail());
         String gpa_string = Float.toString(student.getGPA());
         jTextField9.setText(gpa_string);
+        String root_string = Integer.toString(root);
+        jTextField10.setText(root_string);
     }
     
     private void btnStageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStageActionPerformed
@@ -449,6 +560,85 @@ public class UserProfileScreen extends javax.swing.JFrame {
         Login.main(null);
     }//GEN-LAST:event_jButton7ActionPerformed
 
+    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
+        // TODO add your handling code here:
+        String root = jTextField10.getText();
+        String id = jTextField1.getText();
+        String name = jTextField2.getText();
+        String gender = jTextField3.getText();
+        String date_string = jTextField4.getText();
+        Date date = null;
+        try {
+            date = new SimpleDateFormat("dd/MM/yyyy").parse(date_string);
+        } catch (ParseException ex) {
+            Logger.getLogger(UserProfileScreen.class.getName()).log(Level.SEVERE, null, ex);
+            if(date_string.equals("")){
+                showMess("blank birthday!");
+            }
+        }
+        String address = jTextField5.getText();
+        String classroom = jTextField6.getText();
+        String phonenumber = jTextField7.getText();
+        String email = jTextField8.getText();
+        
+        if(jTextField1.getText().length() == 0 || jTextField2.getText().length() == 0 ||
+                jTextField3.getText().length() == 0 ||
+                jTextField4.getText().length() == 0 ||
+                jTextField5.getText().length() == 0 ||
+                jTextField6.getText().length() == 0 ||
+                jTextField7.getText().length() == 0 ||
+                jTextField8.getText().length() == 0 ||
+                jTextField10.getText().length() == 0){
+            showMess("Please fill your form");
+        }
+        else if(jTextField1.getText().equals(readID())){
+            showMess("Clear First");
+        }
+        else if(Integer.parseInt(root) <= 1){
+            showMess("Access denied");
+        }
+        else{
+            Student student = new Student(id, name, gender, date, address, classroom, phonenumber, email);
+            String pass = "K63A3" + id + random();
+            Account acc = new Account(id, id, pass, Integer.parseInt(root));
+
+            boolean add1 = false;
+            boolean add2 = false;
+            while(add2 == false){
+                add2 = addOperation.register(acc);
+            }
+            while(add1 == false){
+                add1 = addOperation.addInformation(id, student);
+            }
+
+            showMess("Success!");
+        }
+       
+    }//GEN-LAST:event_addBtnActionPerformed
+
+    private String random(){
+        String random_string = Double.toHexString(Math.random());
+        String res = "";
+        for (int i = 6; i <= 8; i++) {
+            res += random_string.charAt(i);
+        }
+        return res;
+    }
+    
+    private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
+        // TODO add your handling code here:
+        jTextField1.setText(""); jTextField1.setEditable(true);
+        jTextField2.setText(""); jTextField2.setEditable(true);
+        jTextField3.setText(""); jTextField3.setEditable(true);
+        jTextField4.setText(""); jTextField4.setEditable(true);
+        jTextField5.setText(""); jTextField5.setEditable(true);
+        jTextField6.setText(""); jTextField6.setEditable(true);
+        jTextField7.setText(""); jTextField7.setEditable(true);
+        jTextField8.setText(""); jTextField8.setEditable(true);
+        jTextField9.setText(""); 
+        jTextField10.setText("");jTextField10.setEditable(true);
+    }//GEN-LAST:event_clearBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -486,6 +676,7 @@ public class UserProfileScreen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addBtn;
     private javax.swing.JButton btnClassList;
     private javax.swing.JButton btnEvent;
     private javax.swing.JButton btnFund;
@@ -493,8 +684,10 @@ public class UserProfileScreen extends javax.swing.JFrame {
     private javax.swing.JButton btnStage;
     private javax.swing.JToggleButton btnToggle;
     private javax.swing.JButton btnTrainingReport;
+    private javax.swing.JButton clearBtn;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -507,6 +700,7 @@ public class UserProfileScreen extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
