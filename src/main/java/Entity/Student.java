@@ -55,6 +55,19 @@ public class Student implements Serializable {
         this.name = name;
     }
 
+    public Student(String id, String name, String gender, Date birthday, String address, String classroom, String phoneNumber, String email) {
+        this.studentId = id;
+        this.name = name;
+        this.gender = gender;
+        this.birthday = birthday;
+        this.address = address;
+        this.classroom = classroom;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.GPA = (float) 0.0;
+    }
+    
+    
     public Account getAccount() {
         return account;
     }
@@ -170,10 +183,8 @@ public class Student implements Serializable {
 
     @Override
     public String toString() {
-        return "Student{" +
-                "studentId='" + studentId + '\'' +
-                ", name='" + name + '\'' +
-                '}';
+        return "Student{" + "studentId=" + studentId + ", name=" + name + ", gender=" + gender + ", birthday=" + birthday + ", address=" + address + ", classroom=" + classroom + ", phoneNumber=" + phoneNumber + ", email=" + email + ", GPA=" + GPA + ", account=" + account + ", trainingScores=" + trainingScores + ", eventSet=" + eventSet + ", subjectSet=" + subjectSet + ", creditsCount=" + creditsCount + '}';
     }
+    
 
 }

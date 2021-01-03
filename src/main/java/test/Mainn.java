@@ -3,14 +3,14 @@ package test;
 import Entity.*;
 import Hibernate.HibernateUtils;
 import Interactive.*;
-import org.hibernate.Session;
+import java.text.SimpleDateFormat;
 
 import java.util.*;
 
+
 public class Mainn {
     public static void dangky() {
-        Account ac1 = new Account("18001131", "18001131"
-                , "bb5522", 1);
+        Account ac1 = new Account("18001131", "18001131", "bb5522", 1);
         boolean ok = addOperation.register(ac1);
         System.out.println("register is " + ok);
         Account ac2 = new Account("18001132", "18001132", "bb5522", 1);
@@ -134,24 +134,29 @@ public class Mainn {
 //        viewSubjects();
 //        addSubjectsToStudent();
 //        viewStudentSubject();
-        test();
-    }
 
-    private static void test() throws Exception {
+//        Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+//        try {
+//            Student student = getOperation.getStudentByStudentId("18001131");
+//            System.out.println(student);
+//        } catch (Exception e) {
+//        }
+//        session.close();
+//        String currentDir = System.getProperty("user.dir");
+//        System.out.println("Current dir using System:" +currentDir);
+//        Date date = new SimpleDateFormat("dd/MM/yyyy").parse("30/01/2020");
+//        System.out.println(date.toString());
         Session session = HibernateUtils.getSessionFactory().getCurrentSession();
-        List<Student> students = new ArrayList<>();
+        List<TrainingScores> trainingScores = new ArrayList<>();
         try {
             session.getTransaction().begin();
-            students = getOperation.loadAllData(Student.class, (org.hibernate.Session) session);
-
+            trainingScores= getOperation.loadAllData(TrainingScores.class, session);
         } catch (Exception e) {
-            System.err.println("[ERROR]");
-            session.getTransaction().rollback();
         }
-        session.close();
-        for(Student student:students) {
-            System.out.println(student);
+        finally{
+            session.close();
         }
+
     }
 
     private static void viewStudentSubject() {
