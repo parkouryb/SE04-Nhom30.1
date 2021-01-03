@@ -38,7 +38,7 @@ Tạo ra một nền tảng cho phép người dùng quản lý lớp học.
 	⚫	 
 
 ## 5. Cách sử dụng
-https://github.com/parkouryb/SE04-Nhom30.1/wiki/Quick-Star
+https://github.com/parkouryb/SE04-Nhom30.1/wiki
 
 ## 6. Thành viên nhóm
 	⚫ Hà Trung Hiếu
