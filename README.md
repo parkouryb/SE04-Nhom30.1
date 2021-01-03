@@ -35,7 +35,7 @@ Tạo ra một nền tảng cho phép người dùng quản lý lớp học.
 ### 4.1. Java Swing
 	⚫ NetBeans 11
 ### 4.2. Android
-	⚫	 
+	⚫ Bấm vào đường link sau đây để tải và cài đặt app Android: https://drive.google.com/file/d/1WV9ioTpTaO7vleS2DcmXRMXJybmwkJ2B/view?usp=sharing 	 
 
 ## 5. Cách sử dụng
 https://github.com/parkouryb/SE04-Nhom30.1/wiki
