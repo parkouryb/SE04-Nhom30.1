@@ -70,7 +70,7 @@ public class FundScreen extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(102, 205, 170));
 
         btnToggle.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnToggle.setText("//user full name");
+        btnToggle.setLabel("User information");
         btnToggle.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnToggleActionPerformed(evt);
@@ -80,35 +80,35 @@ public class FundScreen extends javax.swing.JFrame {
         panelToggle.setBackground(new java.awt.Color(102, 205, 170));
         panelToggle.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        btnSchedule.setText("Thời khóa biểu (edit - view)");
+        btnSchedule.setLabel("Schedule");
         btnSchedule.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnScheduleActionPerformed(evt);
             }
         });
 
-        btnClassList.setText("Danh sách lớp");
+        btnClassList.setLabel("Class List");
         btnClassList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClassListActionPerformed(evt);
             }
         });
 
-        btnFund.setText("Quỹ lớp");
+        btnFund.setLabel("Class Fund");
         btnFund.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFundActionPerformed(evt);
             }
         });
 
-        btnEvent.setText("Các sự kiện ");
+        btnEvent.setLabel("Events");
         btnEvent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEventActionPerformed(evt);
             }
         });
 
-        btnTrainingReport.setText("Điểm rèn luyện");
+        btnTrainingReport.setLabel("Training Scores");
         btnTrainingReport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTrainingReportActionPerformed(evt);
@@ -122,7 +122,7 @@ public class FundScreen extends javax.swing.JFrame {
             }
         });
 
-        btnStage.setText("Tiến độ môn học (học phần)");
+        btnStage.setLabel("Education Program");
         btnStage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnStageActionPerformed(evt);
@@ -179,6 +179,8 @@ public class FundScreen extends javax.swing.JFrame {
                 .addComponent(panelToggle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(192, Short.MAX_VALUE))
         );
+
+        btnToggle.getAccessibleContext().setAccessibleName("User Information");
 
         javax.swing.GroupLayout panelMainLayout = new javax.swing.GroupLayout(panelMain);
         panelMain.setLayout(panelMainLayout);

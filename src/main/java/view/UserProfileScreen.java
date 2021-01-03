@@ -243,7 +243,7 @@ public class UserProfileScreen extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(102, 205, 170));
 
         btnToggle.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnToggle.setText("//user full name");
+        btnToggle.setText("User Information");
         btnToggle.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnToggleActionPerformed(evt);
@@ -253,35 +253,35 @@ public class UserProfileScreen extends javax.swing.JFrame {
         panelToggle.setBackground(new java.awt.Color(102, 205, 170));
         panelToggle.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        btnSchedule.setText("Th?i khóa bi?u (edit - view)");
+        btnSchedule.setText("Schedule");
         btnSchedule.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnScheduleActionPerformed(evt);
             }
         });
 
-        btnClassList.setText("Danh sách l?p");
+        btnClassList.setText("Class List");
         btnClassList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClassListActionPerformed(evt);
             }
         });
 
-        btnFund.setText("Qu? l?p");
+        btnFund.setText("Class Fund");
         btnFund.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFundActionPerformed(evt);
             }
         });
 
-        btnEvent.setText("Các s? ki?n ");
+        btnEvent.setText("Events");
         btnEvent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEventActionPerformed(evt);
             }
         });
 
-        btnTrainingReport.setText("?i?m rèn luy?n");
+        btnTrainingReport.setText("Training Scores");
         btnTrainingReport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTrainingReportActionPerformed(evt);
@@ -295,7 +295,7 @@ public class UserProfileScreen extends javax.swing.JFrame {
             }
         });
 
-        btnStage.setText("Ti?n ?? môn h?c (h?c ph?n)");
+        btnStage.setText("Education Program");
         btnStage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnStageActionPerformed(evt);
