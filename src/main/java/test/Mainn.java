@@ -3,6 +3,8 @@ package test;
 import Entity.*;
 import Hibernate.HibernateUtils;
 import Interactive.*;
+import org.hibernate.Session;
+
 import java.text.SimpleDateFormat;
 
 import java.util.*;
