@@ -1,6 +1,11 @@
 # Student Manager
+
+    Đây là phần mềm quản lý sinh viên đại học.
+    Bài tập môn công nghệ phần mềm của nhóm SE04-Nhom 30.1. 💖
+    Người Hướng Dẫn: Mr Bùi Sỹ Nguyên.
+
 ## 1. Mục tiêu, định hướng, các kết quả cần đạt
-Tạo ra một nền tảng cho phép người dùng quản lý lớp học.
+Tạo ra một nền tảng cho phép người dùng quản lý các công việc trong lớp một cách dễ dàng.
 
 ## 2. Công nghệ và công cụ
 ### 2.1. Công nghệ
@@ -31,15 +36,16 @@ Tạo ra một nền tảng cho phép người dùng quản lý lớp học.
 	⚫ Xem danh sách lớp: mọi người có thể xem danh sách gồm họ tên, mã sinh viên và chức vụ trong lớp.
 	⚫ Chỉnh sửa 1 số thông tin cá nhân.
 
-## 4. Cài đặt
+## 4. Cài đặt: 
 ### 4.1. Java Swing
-	⚫ NetBeans 11
+	⚫ https://github.com/parkouryb/SE04-Nhom30.1/wiki/H%C6%B0%E1%BB%9Bng-d%E1%BA%ABn-c%C3%A0i-%C4%91%E1%BA%B7t
 ### 4.2. Android
 	⚫ Bấm vào đường link sau đây để tải và cài đặt app Android: https://drive.google.com/file/d/1WV9ioTpTaO7vleS2DcmXRMXJybmwkJ2B/view?usp=sharing 	 
 
 ## 5. Cách sử dụng
-https://github.com/parkouryb/SE04-Nhom30.1/wiki
-
+	⚫ Giao diện Java Swing: https://github.com/parkouryb/SE04-Nhom30.1/wiki/H%C6%B0%E1%BB%9Bng-d%E1%BA%ABn-s%E1%BB%AD-d%E1%BB%A5ng-(Java-Swing)
+	⚫ Giao diện Android: https://github.com/parkouryb/SE04-Nhom30.1/wiki/H%C6%B0%E1%BB%9Bng-d%E1%BA%ABn-s%E1%BB%AD-d%E1%BB%A5ng-(Android)
+	
 ## 6. Thành viên nhóm
 	⚫ Hà Trung Hiếu
 	⚫ Vũ Hải Đăng
