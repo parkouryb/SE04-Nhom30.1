@@ -47,7 +47,7 @@ public class ClassListScreen extends javax.swing.JFrame {
         btnStage = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Danh sÃ¡ch lá»›p há»?c");
+        setTitle("Danh sách l?p h?c");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -65,7 +65,7 @@ public class ClassListScreen extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(243, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(234, 234, 234))
         );
@@ -83,35 +83,35 @@ public class ClassListScreen extends javax.swing.JFrame {
         panelToggle.setBackground(new java.awt.Color(102, 205, 170));
         panelToggle.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        btnSchedule.setText("Thá»?i khoÃ¡ biá»ƒu (edit - view)");
+        btnSchedule.setText("Th?i khóa bi?u (edit - view)");
         btnSchedule.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnScheduleActionPerformed(evt);
             }
         });
 
-        btnClassList.setText("Danh sÃ¡ch lá»›p");
+        btnClassList.setText("Danh sách l?p");
         btnClassList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClassListActionPerformed(evt);
             }
         });
 
-        btnFund.setText("Quá»¹ lá»›p");
+        btnFund.setText("Qu? l?p");
         btnFund.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFundActionPerformed(evt);
             }
         });
 
-        btnEvent.setText("CÃ¡c sá»± kiá»‡n ");
+        btnEvent.setText("Các s? ki?n ");
         btnEvent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEventActionPerformed(evt);
             }
         });
 
-        btnTrainingReport.setText("Ä?iá»ƒm rÃ¨n luyá»‡n");
+        btnTrainingReport.setText("?i?m rèn luy?n");
         btnTrainingReport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTrainingReportActionPerformed(evt);
@@ -125,7 +125,7 @@ public class ClassListScreen extends javax.swing.JFrame {
             }
         });
 
-        btnStage.setText("Tiáº¿n Ä‘á»™ mÃ´n há»?c (há»?c pháº§n)");
+        btnStage.setText("Ti?n ?? môn h?c (h?c ph?n)");
         btnStage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnStageActionPerformed(evt);

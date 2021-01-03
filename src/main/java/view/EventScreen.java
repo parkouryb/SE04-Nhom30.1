@@ -5,7 +5,15 @@
  */
 package view;
 
+import Entity.Event;
 import Entity.Student;
+import Hibernate.HibernateUtils;
+import Interactive.getOperation;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import org.hibernate.Hibernate;
+import org.hibernate.Session;
 
 /**
  *
@@ -262,10 +270,50 @@ public class EventScreen extends javax.swing.JFrame {
 
     private void btnEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEventActionPerformed
         // TODO add your handling code here:
-        EventScreen.main(null);
-        this.dispose();
+        Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+        List<Event> events = new ArrayList<>();
+        try {
+            session.getTransaction().begin();
+            events = getOperation.loadAllData(Event.class, session);
+        } catch (Exception e) {
+        }
+        finally{
+            session.close();
+        }
+        loadTable(events);
     }//GEN-LAST:event_btnEventActionPerformed
 
+    private void loadTable(List<Event> events){
+        Object[][] data = null;
+        int rows = events.size();
+        String [][] evt = new String[rows][5];
+        for (int i = 0; i < rows; i++) {
+            int col = 0;
+            evt[i][col] = events.get(i).getEventId();
+            col++;
+            evt[i][col] = events.get(i).getEventName();
+            col++;
+            evt[i][col] = "NULL";
+            col++;
+            evt[i][col] = "NULL";
+            col++;
+            boolean req = events.get(i).isRequirement();
+            if(req){
+                evt[i][col] = "YES";
+            }
+            else{
+                evt[i][col] = "NO";
+            }
+        }
+        data = evt;
+        EventTable.setModel(new DefaultTableModel(
+                data,
+                new String[] {
+                    "Event ID", "Event Name", "Time", "Address", "Requirement"
+                }
+                ));
+    }
+    
     private void btnTrainingReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrainingReportActionPerformed
         // TODO add your handling code here:
         TrainingReportScreen.main(null);
