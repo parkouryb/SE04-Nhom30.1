@@ -4,7 +4,17 @@
  * and open the template in the editor.
  */
 package view;
-//Tiến độ môn học
+//Tiến độ môn h�?c
+
+import Entity.Event;
+import Entity.Subject;
+import Hibernate.HibernateUtils;
+import Interactive.getOperation;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import org.hibernate.Session;
+
 /**
  *
  * @author Cam Nhung
@@ -113,7 +123,7 @@ public class StageScreen extends javax.swing.JFrame {
         panelToggle.setBackground(new java.awt.Color(102, 205, 170));
         panelToggle.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        btnSchedule.setText("Thời khóa biểu (edit - view)");
+        btnSchedule.setText("Th�?i khóa biểu (edit - view)");
         btnSchedule.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnScheduleActionPerformed(evt);
@@ -141,7 +151,7 @@ public class StageScreen extends javax.swing.JFrame {
             }
         });
 
-        btnTrainingReport.setText("Điểm rèn luyện");
+        btnTrainingReport.setText("�?iểm rèn luyện");
         btnTrainingReport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTrainingReportActionPerformed(evt);
@@ -155,7 +165,7 @@ public class StageScreen extends javax.swing.JFrame {
             }
         });
 
-        btnStage.setText("Tiến độ môn học (học phần)");
+        btnStage.setText("Tiến độ môn h�?c (h�?c phần)");
         btnStage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnStageActionPerformed(evt);
@@ -255,9 +265,43 @@ public class StageScreen extends javax.swing.JFrame {
 
     private void btnStageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStageActionPerformed
         // TODO add your handling code here:
-
+        Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+        List<Subject> subjects = new ArrayList<>();
+        try {
+            session.getTransaction().begin();
+            subjects = getOperation.loadAllData(Subject.class, session);
+        } catch (Exception e) {
+        }
+        finally{
+            session.close();
+        }
+        loadTable(subjects);
     }//GEN-LAST:event_btnStageActionPerformed
 
+    private void loadTable(List<Subject> subjects){
+        Object[][] data = null;
+        int rows = subjects.size();
+        String [][] evt = new String[rows][4];
+        for (int i = 0; i < rows; i++) {
+            int col = 0;
+            evt[i][col] = subjects.get(i).getSubjectCode();
+            col++;
+            evt[i][col] = subjects.get(i).getSubjectTitle();
+            col++;
+            evt[i][col] = Integer.toString(subjects.get(i).getCredits());
+            col++;
+            evt[i][col] = subjects.get(i).getYear();
+        }
+        data = evt;
+        ScheduleTable.setModel(new DefaultTableModel(
+                data,
+                new String[] {
+                    "Subject ID", "Subject Name", "Credits", "Year"
+                }
+                ));
+    }
+    
+    
     private void btnScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnScheduleActionPerformed
         // TODO add your handling code here:
         ScheduleScreen.main(null);

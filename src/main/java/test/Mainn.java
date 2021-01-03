@@ -147,16 +147,17 @@ public class Mainn {
 //        System.out.println("Current dir using System:" +currentDir);
 //        Date date = new SimpleDateFormat("dd/MM/yyyy").parse("30/01/2020");
 //        System.out.println(date.toString());
-          Session session = HibernateUtils.getSessionFactory().getCurrentSession();
-            List<Event> events = new ArrayList<>();
-            try {
-                session.getTransaction().begin();
-                events = getOperation.loadAllData(Event.class, session);
-            } catch (Exception e) {
-            }
-            finally{
-                session.close();
-            }
+        Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+        List<TrainingScores> trainingScores = new ArrayList<>();
+        try {
+            session.getTransaction().begin();
+            trainingScores= getOperation.loadAllData(TrainingScores.class, session);
+        } catch (Exception e) {
+        }
+        finally{
+            session.close();
+        }
+        
     }
 
     private static void viewStudentSubject() {

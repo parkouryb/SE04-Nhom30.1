@@ -5,6 +5,20 @@
  */
 package view;
 
+import Entity.Subject;
+import Entity.TrainingScores;
+import Hibernate.HibernateUtils;
+import Interactive.getOperation;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+import org.hibernate.Session;
+
 /**
  *
  * @author Cam Nhung
@@ -16,6 +30,7 @@ public class TrainingReportScreen extends javax.swing.JFrame {
     /**
      * Creates new form UserProfileScreen
      */
+    private static String filePath = System.getProperty("user.dir") + "\\loginID.txt";
     public TrainingReportScreen() {
         initComponents();
 //        panelToggle.setVisible(toggleStatus);
@@ -109,7 +124,7 @@ public class TrainingReportScreen extends javax.swing.JFrame {
         panelToggle.setBackground(new java.awt.Color(102, 205, 170));
         panelToggle.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        btnSchedule.setText("Thời khóa biểu (edit - view)");
+        btnSchedule.setText("Th�?i khóa biểu (edit - view)");
         btnSchedule.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnScheduleActionPerformed(evt);
@@ -137,7 +152,7 @@ public class TrainingReportScreen extends javax.swing.JFrame {
             }
         });
 
-        btnTrainingReport.setText("Điểm rèn luyện");
+        btnTrainingReport.setText("�?iểm rèn luyện");
         btnTrainingReport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTrainingReportActionPerformed(evt);
@@ -151,7 +166,7 @@ public class TrainingReportScreen extends javax.swing.JFrame {
             }
         });
 
-        btnStage.setText("Tiến độ môn học (học phần)");
+        btnStage.setText("Tiến độ môn h�?c (h�?c phần)");
         btnStage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnStageActionPerformed(evt);
@@ -277,10 +292,67 @@ public class TrainingReportScreen extends javax.swing.JFrame {
 
     private void btnTrainingReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrainingReportActionPerformed
         // TODO add your handling code here:
-        TrainingReportScreen.main(null);
-        this.dispose();
+        Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+        List<TrainingScores> trainingScores = new ArrayList<>();
+        try {
+            session.getTransaction().begin();
+            trainingScores= getOperation.loadAllData(TrainingScores.class, session);
+        } catch (Exception e) {
+        }
+        finally{
+            session.close();
+        }
+        loadTable(trainingScores, readID());
     }//GEN-LAST:event_btnTrainingReportActionPerformed
 
+    private String readID(){
+        Scanner scan = null;
+        String studentId = "";
+        try {
+            scan = new Scanner(new File(filePath));
+            studentId = scan.nextLine();
+            scan.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(UserProfileScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return studentId;
+    }
+    private void loadTable(List<TrainingScores> trainingScores, String StudentId){
+        Object[][] data = null;
+        List<TrainingScores> student_training = new ArrayList<>();
+        for (TrainingScores ts : trainingScores) {
+            if(ts.getId().getStudent().getStudentId().equals(StudentId)){
+                student_training.add(ts);
+            }
+        }
+        int rows = student_training.size();
+        String [][] evt = new String[rows][3];
+        for (int i = 0; i < rows; i++) {
+            int col = 0;
+            String year = student_training.get(i).getId().getSem_year();
+            String semes1 = "";
+            for(int k = 0; k < 2; k++){
+                semes1 += year.charAt(k);
+            }
+            String semes2 = "";
+            for(int k = 3; k < year.length(); k++){
+                semes2 += year.charAt(k);
+            }
+            evt[i][col] = semes2;
+            col++;
+            evt[i][col] = semes1;
+            col++;
+            evt[i][col] = Integer.toString(student_training.get(i).getPoint());
+        }
+        data = evt;
+        TrainingReportTable.setModel(new DefaultTableModel(
+                data,
+                new String[] {
+                    "Year", "Semeter", "Points"
+                }
+                ));
+    }
+    
     private void btnStageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStageActionPerformed
         // TODO add your handling code here:
         UserProfileScreen.main(null);
