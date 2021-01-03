@@ -123,19 +123,19 @@ public class Mainn {
     }
 
     public static void main(String[] args) throws Exception{
-//        dangky();
-//        themthongtinsinhvientheomasinhvien();
-//        thaydoidiemGPA();
-//        deleteAccount();
-//        addTrainingScore();
-//        viewTrainingScore();
-//        addEvent();
-//        addEventStudentId();
-//        getEventStudentId();
-//        addSubjects();
-//        viewSubjects();
-//        addSubjectsToStudent();
-//        viewStudentSubject();
+        dangky();
+        themthongtinsinhvientheomasinhvien();
+        thaydoidiemGPA();
+        deleteAccount();
+        addTrainingScore();
+        viewTrainingScore();
+        addEvent();
+        addEventStudentId();
+        getEventStudentId();
+        addSubjects();
+        viewSubjects();
+        addSubjectsToStudent();
+        viewStudentSubject();
 
 //        Session session = HibernateUtils.getSessionFactory().getCurrentSession();
 //        try {

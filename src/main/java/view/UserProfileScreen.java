@@ -594,7 +594,7 @@ public class UserProfileScreen extends javax.swing.JFrame {
         else if(jTextField1.getText().equals(readID())){
             showMess("Clear First");
         }
-        else if(Integer.parseInt(root) <= 1){
+        else if(Integer.parseInt(root) > 1){
             showMess("Access denied");
         }
         else{

@@ -3,9 +3,13 @@ package test;
 import Entity.*;
 import Hibernate.HibernateUtils;
 import Interactive.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import org.hibernate.Session;
 
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class CreateExampleDatabase {
     private static class Pair{
@@ -43,5 +47,17 @@ public class CreateExampleDatabase {
         for (Pair pair: list) {
             System.out.println(pair);
         }
+//        Date date;
+//        try {
+//            date = new SimpleDateFormat("dd/MM/yyyy").parse("16/12/2000");
+//            Student student = new Student("admin", "boss", "MALE", date, "Ha Nam", "K63A3", "092922662626", "adsdasd@gmail.com");
+//            boolean isOk = false;
+//            while(isOk == false){
+//                isOk = addOperation.addInformation("admin", student);
+//            }
+//        } catch (ParseException ex) {
+//            Logger.getLogger(CreateExampleDatabase.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+        
     }
 }
